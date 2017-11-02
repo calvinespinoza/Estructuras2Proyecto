@@ -11,17 +11,15 @@ public class Campos {
 
     String name;
     String type; //No se a que se refiere con tipo
-    String description;
     int length;
     boolean key; //Llave primaria
 
     public Campos() {
     }
 
-    public Campos(String name, String type, String description, int length, boolean key) {
+    public Campos(String name, String type, int length, boolean key) {
         this.name = name;
         this.type = type;
-        this.description = description;
         this.length = length;
         this.key = key;
     }
@@ -40,14 +38,6 @@ public class Campos {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public int getLength() {
