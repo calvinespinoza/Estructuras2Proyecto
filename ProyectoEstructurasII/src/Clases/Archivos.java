@@ -18,10 +18,14 @@ public class Archivos {
     ArrayList<Campos> campos = new ArrayList();
 
     public Archivos() {
+        
     }
+    
+    
 
     public Archivos(String name) {
         this.name = name;
+        File f = new File("./Archivos/"+ name +".txt");
     }
 
     public String getName() {
@@ -45,7 +49,7 @@ public class Archivos {
     }
 
     public void save() throws IOException {
-        String path = "./" + name + ".txt";
+        String path = "./Archivos/" + name + ".txt";
         if (this.campos.isEmpty()) {
             System.out.println("You can't save yet");
         } else {
@@ -57,4 +61,6 @@ public class Archivos {
             writer.close();
         }
     }
+    
+    
 }
