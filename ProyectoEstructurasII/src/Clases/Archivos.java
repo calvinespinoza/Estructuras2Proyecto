@@ -18,7 +18,6 @@ public class Archivos {
     ArrayList<Campos> campos = new ArrayList();
 
     public Archivos() {
-        
     }
     
     
