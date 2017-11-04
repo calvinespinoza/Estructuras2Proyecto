@@ -19,12 +19,10 @@ public class Archivos {
 
     public Archivos() {
     }
-    
-    
 
     public Archivos(String name) {
         this.name = name;
-        File f = new File("./Archivos/"+ name +".txt");
+        File f = new File("./Archivos/" + name + ".txt");
     }
 
     public String getName() {
@@ -49,17 +47,15 @@ public class Archivos {
 
     public void save() throws IOException {
         String path = "./Archivos/" + name + ".txt";
-        if (this.campos.isEmpty()) {
-            System.out.println("You can't save yet");
-        } else {
-            File f = new File(path);
-            BufferedWriter writer = new BufferedWriter(new FileWriter(f));
+        File f = new File(path);
+        BufferedWriter writer = new BufferedWriter(new FileWriter(f));
+        if (!campos.isEmpty()) {
             for (int i = 0; i < campos.size(); i++) {
                 writer.append(campos.get(i).getName() + ": ");
             }
-            writer.close();
         }
+        writer.close();
     }
-    
-    
 }
+
+
