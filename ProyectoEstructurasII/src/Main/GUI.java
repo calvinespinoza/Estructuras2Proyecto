@@ -54,7 +54,7 @@ public class GUI extends javax.swing.JFrame {
         bt_removeCampos = new javax.swing.JButton();
         jb_completeFile = new javax.swing.JButton();
         bt_createFile = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
+        jp_addFileTopBar = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         bt_backtoMain = new javax.swing.JButton();
@@ -145,7 +145,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jPanel3.setBackground(new java.awt.Color(0, 150, 136));
+        jp_addFileTopBar.setBackground(new java.awt.Color(0, 150, 136));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ic_clear_white_24dp_1x.png"))); // NOI18N
         jButton3.setContentAreaFilled(false);
@@ -171,22 +171,22 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout jp_addFileTopBarLayout = new javax.swing.GroupLayout(jp_addFileTopBar);
+        jp_addFileTopBar.setLayout(jp_addFileTopBarLayout);
+        jp_addFileTopBarLayout.setHorizontalGroup(
+            jp_addFileTopBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_addFileTopBarLayout.createSequentialGroup()
                 .addComponent(bt_backtoMain)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jp_addFileTopBarLayout.setVerticalGroup(
+            jp_addFileTopBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+            .addGroup(jp_addFileTopBarLayout.createSequentialGroup()
                 .addComponent(bt_backtoMain)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -200,6 +200,7 @@ public class GUI extends javax.swing.JFrame {
                 bt_editActionPerformed(evt);
             }
         });
+        bt_edit.setVisible(false);
 
         javax.swing.GroupLayout jp_addFileLayout = new javax.swing.GroupLayout(jp_addFile);
         jp_addFile.setLayout(jp_addFileLayout);
@@ -228,12 +229,12 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_addFileLayout.createSequentialGroup()
                         .addComponent(jb_completeFile, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jp_addFileTopBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jp_addFileLayout.setVerticalGroup(
             jp_addFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jp_addFileLayout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jp_addFileTopBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(jl_fileName)
                 .addGap(29, 29, 29)
@@ -304,6 +305,8 @@ public class GUI extends javax.swing.JFrame {
         jLabel5.setText("Key");
 
         bg_type.add(chb_key);
+        chb_key.setContentAreaFilled(false);
+        chb_key.setVisible(true);
 
         jb_addFile1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ic_add_circle_white_24dp_2x.png"))); // NOI18N
         jb_addFile1.setBorder(null);
@@ -641,6 +644,7 @@ public class GUI extends javax.swing.JFrame {
         cb_campos.setVisible(true);
         bt_addCampos.setVisible(true);
         bt_removeCampos.setVisible(true);
+        bt_edit.setVisible(true);
         tf_name.setVisible(false);
         bt_createFile.setVisible(false);
         jl_fileName.setVisible(false);
@@ -675,7 +679,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        this.setState(JFrame.ICONIFIED);
+       this .setState(JFrame.ICONIFIED);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -779,7 +783,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -794,6 +797,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JDialog jd_editCampos;
     private javax.swing.JLabel jl_fileName;
     private javax.swing.JPanel jp_addFile;
+    private javax.swing.JPanel jp_addFileTopBar;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JTextField tf_camposLenght;
     private javax.swing.JTextField tf_camposName;
