@@ -756,6 +756,14 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_addFile1ActionPerformed
 
     private void jb_completeFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_completeFileActionPerformed
+      cb_campos.setVisible(false);
+      bt_addCampos.setVisible(false);
+      bt_removeCampos.setVisible(false);
+      bt_edit.setVisible(false);
+      jl_fileName.setVisible(true);
+      bt_createFile.setVisible(true);
+      tf_name.setVisible(true);
+      
         jd_addFile.dispose();
         try {
             archivo.save();
@@ -777,6 +785,11 @@ public class GUI extends javax.swing.JFrame {
         jl_fileName.setVisible(false);
         jd_addFile.pack();
         jd_addFile.setLocationRelativeTo(null);
+        try {
+            archivo.save();
+        } catch (IOException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_bt_createFileActionPerformed
 
     private void tf_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_nameActionPerformed
@@ -824,6 +837,8 @@ public class GUI extends javax.swing.JFrame {
         if (cb_campos.getSelectedItem() == null) {
             JOptionPane.showMessageDialog(this, "You haven't selected anything");
         } else {
+            jd_editCampos.pack();
+            jd_editCampos.setVisible(true);
             String cName = cb_campos.getSelectedItem().toString();
             tempCamp = null;
             for (int i = 0; i < archivo.getCampos().size(); i++) {
