@@ -63,9 +63,9 @@ public class GUI extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         tf_camposName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        rb_int = new javax.swing.JRadioButton();
+        rb_char = new javax.swing.JRadioButton();
+        rb_double = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
         tf_camposLenght = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -83,6 +83,18 @@ public class GUI extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         bt_backtoAddFile1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        rb_intEdit = new javax.swing.JRadioButton();
+        rb_charEdit = new javax.swing.JRadioButton();
+        rb_doubleEdit = new javax.swing.JRadioButton();
+        tf_camposNameEdit = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        tf_lengthEdit = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        chb_keyEdit = new javax.swing.JCheckBox();
+        jb_addFile2 = new javax.swing.JButton();
+        bg_typeEdit = new javax.swing.ButtonGroup();
         mainPanel = new javax.swing.JPanel();
         jb_addFile = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -271,26 +283,26 @@ public class GUI extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(240, 240, 240));
         jLabel2.setText("Name");
 
-        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
-        bg_type.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Gotham Medium", 0, 14)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton1.setText("int");
-        jRadioButton1.setContentAreaFilled(false);
+        rb_int.setBackground(new java.awt.Color(255, 255, 255));
+        bg_type.add(rb_int);
+        rb_int.setFont(new java.awt.Font("Gotham Medium", 0, 14)); // NOI18N
+        rb_int.setForeground(new java.awt.Color(255, 255, 255));
+        rb_int.setText("int");
+        rb_int.setContentAreaFilled(false);
 
-        jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
-        bg_type.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Gotham Medium", 0, 14)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton2.setText("char");
-        jRadioButton2.setContentAreaFilled(false);
+        rb_char.setBackground(new java.awt.Color(255, 255, 255));
+        bg_type.add(rb_char);
+        rb_char.setFont(new java.awt.Font("Gotham Medium", 0, 14)); // NOI18N
+        rb_char.setForeground(new java.awt.Color(255, 255, 255));
+        rb_char.setText("char");
+        rb_char.setContentAreaFilled(false);
 
-        jRadioButton3.setBackground(new java.awt.Color(255, 255, 255));
-        bg_type.add(jRadioButton3);
-        jRadioButton3.setFont(new java.awt.Font("Gotham Medium", 0, 14)); // NOI18N
-        jRadioButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton3.setText("double");
-        jRadioButton3.setContentAreaFilled(false);
+        rb_double.setBackground(new java.awt.Color(255, 255, 255));
+        bg_type.add(rb_double);
+        rb_double.setFont(new java.awt.Font("Gotham Medium", 0, 14)); // NOI18N
+        rb_double.setForeground(new java.awt.Color(255, 255, 255));
+        rb_double.setText("double");
+        rb_double.setContentAreaFilled(false);
 
         jLabel3.setFont(new java.awt.Font("Gotham Medium", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(240, 240, 240));
@@ -298,7 +310,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Gotham Medium", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel4.setText("Lenght");
+        jLabel4.setText("Length");
 
         jLabel5.setFont(new java.awt.Font("Gotham Medium", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(240, 240, 240));
@@ -308,6 +320,7 @@ public class GUI extends javax.swing.JFrame {
         chb_key.setContentAreaFilled(false);
         chb_key.setVisible(true);
 
+        jb_addFile1.setForeground(new java.awt.Color(255, 255, 255));
         jb_addFile1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ic_add_circle_white_24dp_2x.png"))); // NOI18N
         jb_addFile1.setBorder(null);
         jb_addFile1.setBorderPainted(false);
@@ -380,11 +393,11 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(tf_camposName, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rb_int, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(rb_double, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel4)
@@ -392,7 +405,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jRadioButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                                        .addComponent(rb_char, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
                                         .addComponent(tf_camposLenght))
                                     .addComponent(chb_key))))
                         .addGap(0, 113, Short.MAX_VALUE)))
@@ -408,13 +421,13 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(tf_camposName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton1)
+                .addComponent(rb_int)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jRadioButton3)
+                    .addComponent(rb_double)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton2)
+                .addComponent(rb_char)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(tf_camposLenght, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -473,7 +486,7 @@ public class GUI extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addComponent(bt_backtoAddFile1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton7))
@@ -487,24 +500,126 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        jLabel6.setFont(new java.awt.Font("Gotham Medium", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel6.setText("Name");
+
+        rb_intEdit.setBackground(new java.awt.Color(255, 255, 255));
+        bg_typeEdit.add(rb_intEdit);
+        rb_intEdit.setFont(new java.awt.Font("Gotham Medium", 0, 14)); // NOI18N
+        rb_intEdit.setForeground(new java.awt.Color(255, 255, 255));
+        rb_intEdit.setText("int");
+        rb_intEdit.setContentAreaFilled(false);
+
+        rb_charEdit.setBackground(new java.awt.Color(255, 255, 255));
+        bg_typeEdit.add(rb_charEdit);
+        rb_charEdit.setFont(new java.awt.Font("Gotham Medium", 0, 14)); // NOI18N
+        rb_charEdit.setForeground(new java.awt.Color(255, 255, 255));
+        rb_charEdit.setText("char");
+        rb_charEdit.setContentAreaFilled(false);
+
+        rb_doubleEdit.setBackground(new java.awt.Color(255, 255, 255));
+        bg_typeEdit.add(rb_doubleEdit);
+        rb_doubleEdit.setFont(new java.awt.Font("Gotham Medium", 0, 14)); // NOI18N
+        rb_doubleEdit.setForeground(new java.awt.Color(255, 255, 255));
+        rb_doubleEdit.setText("double");
+        rb_doubleEdit.setContentAreaFilled(false);
+
+        jLabel7.setFont(new java.awt.Font("Gotham Medium", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel7.setText("Type");
+
+        jLabel8.setFont(new java.awt.Font("Gotham Medium", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel8.setText("Length");
+
+        jLabel9.setFont(new java.awt.Font("Gotham Medium", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel9.setText("Key");
+
+        bg_type.add(chb_keyEdit);
+        chb_keyEdit.setContentAreaFilled(false);
+        chb_key.setVisible(true);
+
+        jb_addFile2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ic_mode_edit_white_24dp_2x.png"))); // NOI18N
+        jb_addFile2.setBorder(null);
+        jb_addFile2.setBorderPainted(false);
+        jb_addFile2.setContentAreaFilled(false);
+        jb_addFile2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_addFile2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jb_addFile2)
+                .addContainerGap())
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tf_camposNameEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rb_intEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rb_doubleEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(rb_charEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(tf_lengthEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(chb_keyEdit))))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 267, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(tf_camposNameEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rb_intEdit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(rb_doubleEdit)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rb_charEdit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(tf_lengthEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(chb_keyEdit)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addComponent(jb_addFile2)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jd_editCamposLayout = new javax.swing.GroupLayout(jd_editCampos.getContentPane());
         jd_editCampos.getContentPane().setLayout(jd_editCamposLayout);
         jd_editCamposLayout.setHorizontalGroup(
             jd_editCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jd_editCamposLayout.createSequentialGroup()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jd_editCamposLayout.setVerticalGroup(
             jd_editCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -611,7 +726,6 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_addCamposActionPerformed
 
     private void jb_addFile1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_addFile1ActionPerformed
-
         jd_addCampos.setVisible(false);
         boolean key;
         if (chb_key.isSelected()) {
@@ -627,6 +741,18 @@ public class GUI extends javax.swing.JFrame {
         for (int i = 0; i < archivo.getCampos().size(); i++) {
             cb_campos.addItem(archivo.getCampos().get(i).getName());
         }
+        tf_camposLenght.setText("");
+        tf_camposName.setText("");
+        if (rb_int.isSelected()) {
+            rb_int.setSelected(false);
+        } else if (rb_double.isSelected()) {
+            rb_double.setSelected(false);
+        } else if (rb_char.isSelected()) {
+            rb_char.setSelected(false);
+        }
+        if (chb_key.isSelected()) {
+            chb_key.setSelected(false);
+        }
     }//GEN-LAST:event_jb_addFile1ActionPerformed
 
     private void jb_completeFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_completeFileActionPerformed
@@ -636,6 +762,7 @@ public class GUI extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
+        this.setVisible(true);
     }//GEN-LAST:event_jb_completeFileActionPerformed
 
     private void bt_createFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_createFileActionPerformed
@@ -679,7 +806,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-       this .setState(JFrame.ICONIFIED);
+        this.setState(JFrame.ICONIFIED);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -698,7 +825,7 @@ public class GUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "You haven't selected anything");
         } else {
             String cName = cb_campos.getSelectedItem().toString();
-            Campos tempCamp;
+            tempCamp = null;
             for (int i = 0; i < archivo.getCampos().size(); i++) {
                 if (archivo.getCampos().get(i).getName().equals(cName)) {
                     tempCamp = archivo.getCampos().get(i);
@@ -706,8 +833,21 @@ public class GUI extends javax.swing.JFrame {
             }
             jd_editCampos.setVisible(true);
             jd_addCampos.setVisible(false);
+            if (tempCamp != null) {
+                tf_camposNameEdit.setText(tempCamp.getName());
+                if (tempCamp.getType() == "int") {
+                    rb_intEdit.setSelected(true);
+                } else if (tempCamp.getType() == "char") {
+                    rb_charEdit.setSelected(true);
+                } else if (tempCamp.getType() == "double") {
+                    rb_doubleEdit.setSelected(true);
+                }
+                tf_lengthEdit.setText(Integer.toString(tempCamp.getLength()));
+                if (tempCamp.isKey()) {
+                    chb_keyEdit.setSelected(true);
+                }
+            }
         }
-
     }//GEN-LAST:event_bt_editActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -722,6 +862,35 @@ public class GUI extends javax.swing.JFrame {
         jd_editCampos.dispose();
         jd_addFile.setVisible(true);
     }//GEN-LAST:event_bt_backtoAddFile1ActionPerformed
+
+    private void jb_addFile2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_addFile2ActionPerformed
+        // TODO add your handling code here:
+        jd_editCampos.setVisible(false);
+        /*boolean key;
+        if (chb_key.isSelected()) {
+            key = true;
+        } else {
+            key = false;
+        }*/
+        int position = 0;
+        for (int i = 0; i < archivo.getCampos().size(); i++) {
+            if (archivo.getCampos().get(i) == tempCamp) {
+                position = i;
+            }
+        }
+        archivo.getCampos().get(position).setName(tf_camposNameEdit.getText());
+        archivo.getCampos().get(position).setType(bg_typeEdit.getSelection().toString());
+        archivo.getCampos().get(position).setLength(Integer.parseInt(tf_lengthEdit.getText()));
+        archivo.getCampos().get(position).setKey(chb_keyEdit.isSelected());
+        try {
+            archivo.save();
+
+        } catch (IOException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    //tempCamp.setName(tf_camposLenght.getText());
+    //tempCamp.setType(bg_typeEdit.getSelection().toString());
+    }//GEN-LAST:event_jb_addFile2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -760,6 +929,7 @@ public class GUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bg_type;
+    private javax.swing.ButtonGroup bg_typeEdit;
     private javax.swing.JButton bt_addCampos;
     private javax.swing.JButton bt_backtoAddFile;
     private javax.swing.JButton bt_backtoAddFile1;
@@ -769,6 +939,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton bt_removeCampos;
     private javax.swing.JComboBox<String> cb_campos;
     private javax.swing.JCheckBox chb_key;
+    private javax.swing.JCheckBox chb_keyEdit;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -781,16 +952,18 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JButton jb_addFile;
     private javax.swing.JButton jb_addFile1;
+    private javax.swing.JButton jb_addFile2;
     private javax.swing.JButton jb_completeFile;
     private javax.swing.JDialog jd_addCampos;
     private javax.swing.JDialog jd_addFile;
@@ -799,10 +972,21 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jp_addFile;
     private javax.swing.JPanel jp_addFileTopBar;
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JRadioButton rb_char;
+    private javax.swing.JRadioButton rb_charEdit;
+    private javax.swing.JRadioButton rb_double;
+    private javax.swing.JRadioButton rb_doubleEdit;
+    private javax.swing.JRadioButton rb_int;
+    private javax.swing.JRadioButton rb_intEdit;
     private javax.swing.JTextField tf_camposLenght;
     private javax.swing.JTextField tf_camposName;
+    private javax.swing.JTextField tf_camposNameEdit;
+    private javax.swing.JTextField tf_lengthEdit;
     private javax.swing.JTextField tf_name;
     // End of variables declaration//GEN-END:variables
+
+    Archivos archivo;
+    Campos tempCamp;
 
     public void exit() {
         int p = JOptionPane.showConfirmDialog(this, "Are you sure you want to quit");
@@ -810,5 +994,4 @@ public class GUI extends javax.swing.JFrame {
             System.exit(0);
         }
     }
-    Archivos archivo;
 }
