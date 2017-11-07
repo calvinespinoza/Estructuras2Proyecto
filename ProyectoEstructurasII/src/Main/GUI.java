@@ -679,7 +679,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        int p = JOptionPane.showConfirmDialog(this, "Are you sure you want to quit");
+        int p = JOptionPane.showConfirmDialog(this, "Are you sure you want to quit?");
         if (p == 0) {
             System.exit(0);
         }
@@ -691,7 +691,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void bt_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_editActionPerformed
         if (cb_campos.getSelectedItem() == null) {
-            JOptionPane.showMessageDialog(this, "You haven't slected anything");
+            JOptionPane.showMessageDialog(this, "You haven't selected anything");
         } else {
             String cName = cb_campos.getSelectedItem().toString();
             Campos tempCamp;
