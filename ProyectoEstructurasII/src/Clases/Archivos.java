@@ -62,4 +62,11 @@ public class Archivos {
     }
     
     
+    public void listar(){
+        for (int i = 0; i < campos.size(); i++) {
+            System.out.println(campos);
+        }
+    }
+    
+    
 }

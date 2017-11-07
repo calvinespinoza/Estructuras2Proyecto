@@ -15,6 +15,7 @@ public class Campos {
     boolean key; //Llave primaria
 
     public Campos() {
+        
     }
 
     public Campos(String name, String type, int length, boolean key) {
@@ -56,6 +57,10 @@ public class Campos {
         this.key = key;
     }
     
+    @Override
+    public String toString(){
+        return name + ": " + type + "[" + length + "]";
+    }
     
     
 }
