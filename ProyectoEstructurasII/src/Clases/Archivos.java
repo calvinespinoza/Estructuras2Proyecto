@@ -56,6 +56,16 @@ public class Archivos {
         }
         writer.close();
     }
+
+    
+    
+    public void listar(){
+        for (int i = 0; i < campos.size(); i++) {
+            System.out.println(campos);
+        }
+    }
+    
+    
 }
 
 
