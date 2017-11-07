@@ -221,6 +221,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Images/ic_clear_white_24dp_1x.png"/>
                     </Property>
+                    <Property name="borderPainted" type="boolean" value="false"/>
                     <Property name="contentAreaFilled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
@@ -232,6 +233,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Images/ic_arrow_drop_down_white_24dp_1x.png"/>
                     </Property>
+                    <Property name="borderPainted" type="boolean" value="false"/>
                     <Property name="contentAreaFilled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
@@ -243,6 +245,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Images/ic_forward_white_24dp_1x.png"/>
                     </Property>
+                    <Property name="borderPainted" type="boolean" value="false"/>
                     <Property name="contentAreaFilled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
@@ -370,7 +373,7 @@
                           <Component id="chb_key" alignment="2" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel5" alignment="2" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="6" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="jb_addFile1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -545,6 +548,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Images/ic_clear_white_24dp_1x.png"/>
                     </Property>
+                    <Property name="borderPainted" type="boolean" value="false"/>
                     <Property name="contentAreaFilled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
@@ -556,6 +560,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Images/ic_arrow_drop_down_white_24dp_1x.png"/>
                     </Property>
+                    <Property name="borderPainted" type="boolean" value="false"/>
                     <Property name="contentAreaFilled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
@@ -567,6 +572,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Images/ic_forward_white_24dp_1x.png"/>
                     </Property>
+                    <Property name="borderPainted" type="boolean" value="false"/>
                     <Property name="contentAreaFilled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
@@ -720,6 +726,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Images/ic_clear_white_24dp_1x.png"/>
                     </Property>
+                    <Property name="borderPainted" type="boolean" value="false"/>
                     <Property name="contentAreaFilled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
@@ -731,6 +738,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Images/ic_arrow_drop_down_white_24dp_1x.png"/>
                     </Property>
+                    <Property name="borderPainted" type="boolean" value="false"/>
                     <Property name="contentAreaFilled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
@@ -742,6 +750,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Images/ic_forward_white_24dp_1x.png"/>
                     </Property>
+                    <Property name="borderPainted" type="boolean" value="false"/>
                     <Property name="contentAreaFilled" type="boolean" value="false"/>
                   </Properties>
                   <Events>

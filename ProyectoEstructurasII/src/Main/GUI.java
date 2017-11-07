@@ -160,6 +160,7 @@ public class GUI extends javax.swing.JFrame {
         jp_addFileTopBar.setBackground(new java.awt.Color(0, 150, 136));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ic_clear_white_24dp_1x.png"))); // NOI18N
+        jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,6 +169,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ic_arrow_drop_down_white_24dp_1x.png"))); // NOI18N
+        jButton4.setBorderPainted(false);
         jButton4.setContentAreaFilled(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,6 +178,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         bt_backtoMain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ic_forward_white_24dp_1x.png"))); // NOI18N
+        bt_backtoMain.setBorderPainted(false);
         bt_backtoMain.setContentAreaFilled(false);
         bt_backtoMain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -334,6 +337,7 @@ public class GUI extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(0, 188, 212));
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ic_clear_white_24dp_1x.png"))); // NOI18N
+        jButton5.setBorderPainted(false);
         jButton5.setContentAreaFilled(false);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -342,6 +346,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ic_arrow_drop_down_white_24dp_1x.png"))); // NOI18N
+        jButton6.setBorderPainted(false);
         jButton6.setContentAreaFilled(false);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -350,6 +355,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         bt_backtoAddFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ic_forward_white_24dp_1x.png"))); // NOI18N
+        bt_backtoAddFile.setBorderPainted(false);
         bt_backtoAddFile.setContentAreaFilled(false);
         bt_backtoAddFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -436,7 +442,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(chb_key)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jb_addFile1)
                 .addContainerGap())
         );
@@ -457,6 +463,7 @@ public class GUI extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(96, 125, 139));
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ic_clear_white_24dp_1x.png"))); // NOI18N
+        jButton7.setBorderPainted(false);
         jButton7.setContentAreaFilled(false);
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -465,6 +472,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ic_arrow_drop_down_white_24dp_1x.png"))); // NOI18N
+        jButton8.setBorderPainted(false);
         jButton8.setContentAreaFilled(false);
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -473,6 +481,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         bt_backtoAddFile1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ic_forward_white_24dp_1x.png"))); // NOI18N
+        bt_backtoAddFile1.setBorderPainted(false);
         bt_backtoAddFile1.setContentAreaFilled(false);
         bt_backtoAddFile1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
