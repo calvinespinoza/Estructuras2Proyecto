@@ -331,7 +331,7 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="rb_char" pref="89" max="32767" attributes="0"/>
-                                              <Component id="tf_camposLenght" max="32767" attributes="0"/>
+                                              <Component id="tf_camposLength" max="32767" attributes="0"/>
                                           </Group>
                                           <Component id="chb_key" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
@@ -365,7 +365,7 @@
                       <Component id="rb_char" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="2" attributes="0">
-                          <Component id="tf_camposLenght" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="tf_camposLength" alignment="2" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel4" alignment="2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -459,7 +459,7 @@
                 <Property name="text" type="java.lang.String" value="Type"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="tf_camposLenght">
+            <Component class="javax.swing.JTextField" name="tf_camposLength">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
@@ -944,7 +944,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="388" max="32767" attributes="0"/>
                   <Component id="jb_addFile" min="-2" pref="70" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>

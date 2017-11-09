@@ -67,7 +67,7 @@ public class GUI extends javax.swing.JFrame {
         rb_char = new javax.swing.JRadioButton();
         rb_double = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
-        tf_camposLenght = new javax.swing.JTextField();
+        tf_camposLength = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         chb_key = new javax.swing.JCheckBox();
@@ -412,7 +412,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(rb_char, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
-                                        .addComponent(tf_camposLenght))
+                                        .addComponent(tf_camposLength))
                                     .addComponent(chb_key))))
                         .addGap(0, 113, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -436,7 +436,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(rb_char)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(tf_camposLenght, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_camposLength, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
@@ -693,7 +693,7 @@ public class GUI extends javax.swing.JFrame {
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 388, Short.MAX_VALUE)
                 .addComponent(jb_addFile, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -744,7 +744,7 @@ public class GUI extends javax.swing.JFrame {
         } else {
             key = false;
         }
-        Campos c = new Campos(tf_camposName.getText(), bg_type.getSelection().getActionCommand(), Integer.parseInt(tf_camposLenght.getText()), key);
+        Campos c = new Campos(tf_camposName.getText(), bg_type.getSelection().getActionCommand(), Integer.parseInt(tf_camposLength.getText()), key);
         archivo.addCampos(c);
         // jd_addFile.setVisible(true);
         //Talvez haya una manera m[as eficiente de hacer esto
@@ -752,7 +752,7 @@ public class GUI extends javax.swing.JFrame {
         for (int i = 0; i < archivo.getCampos().size(); i++) {
             cb_campos.addItem(archivo.getCampos().get(i).getName());
         }
-        tf_camposLenght.setText("");
+        tf_camposLength.setText("");
         tf_camposName.setText("");
         if (rb_int.isSelected()) {
             rb_int.setSelected(false);
@@ -1004,7 +1004,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton rb_doubleEdit;
     private javax.swing.JRadioButton rb_int;
     private javax.swing.JRadioButton rb_intEdit;
-    private javax.swing.JTextField tf_camposLenght;
+    private javax.swing.JTextField tf_camposLength;
     private javax.swing.JTextField tf_camposName;
     private javax.swing.JTextField tf_camposNameEdit;
     private javax.swing.JTextField tf_lengthEdit;
