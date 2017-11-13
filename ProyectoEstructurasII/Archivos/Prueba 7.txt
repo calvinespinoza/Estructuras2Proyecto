@@ -1,1 +1,0 @@
-Nombre: null[23], Edad: null[232], Apelido: null[3], Ciudad: null[435], 

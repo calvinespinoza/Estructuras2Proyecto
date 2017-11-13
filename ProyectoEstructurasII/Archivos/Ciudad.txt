@@ -1,1 +1,0 @@
-Nombre: null[12], Año: null[2], Fundador: null[12], 

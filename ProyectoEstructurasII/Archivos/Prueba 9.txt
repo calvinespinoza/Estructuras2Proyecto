@@ -1,1 +1,0 @@
-Nombre: null[23], Apellido: null[22], Edad: null[32], Calvin, Espinoza, null, 
