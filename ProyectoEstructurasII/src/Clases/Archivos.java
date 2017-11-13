@@ -5,12 +5,16 @@
  */
 package Clases;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Set;
+import java.util.StringTokenizer;
 
 public class Archivos {
 
@@ -42,7 +46,7 @@ public class Archivos {
         this.campos = campos;
     }
 
-    public void addCampos(Campos c) {
+    public void addCampo(Campos c) {
         this.campos.add(c);
     }
 
@@ -52,6 +56,10 @@ public class Archivos {
 
     public void setRegistros(ArrayList<String> registros) {
         this.registros = registros;
+    }
+    
+    public void addRegistro(String r) {
+        this.registros.add(r);
     }
 
     public void save() throws IOException {
@@ -67,9 +75,12 @@ public class Archivos {
         }
         try {
         if (!registros.isEmpty()) {
+            writer.append("\n");
             for (int i = 0; i < registros.size(); i++) {
-                writer.append(registros.get(i) + "\n");
+                writer.append(registros.get(i) + "|");
             }
+            writer.append("\n");
+           
         }
         } catch (Exception NullException)
         {
@@ -84,7 +95,7 @@ public class Archivos {
         BufferedWriter writer = new BufferedWriter(new FileWriter(f));
         if (!campos.isEmpty()) {
             for (int i = 0; i < campos.size(); i++) {
-                writer.append(campos.get(i).getName() + ": ");
+                writer.append(campos.get(i).getName() + ", ");
             }
 
         }
@@ -96,21 +107,26 @@ public class Archivos {
         writer.close();
     }
 
-    public void read() throws IOException {
-        String path = "./Archivos/" + name + ".txt";
+    public Archivos read(String path) throws IOException {
+        //String path = "./Archivos/" + name + ".txt";
         File f = new File(path);
-        BufferedWriter writer = new BufferedWriter(new FileWriter(f));
-        if (!campos.isEmpty()) {
-            for (int i = 0; i < campos.size(); i++) {
-                writer.append(campos.get(i).getName() + ": ");
-            }
+        Archivos archivo = null;
+        BufferedReader reader = new BufferedReader(new FileReader(f));
+        Scanner sc = new Scanner(f);
+        Scanner sc2 = new Scanner(f);
+        
+        String header = sc2.nextLine();      
+        StringTokenizer token = new StringTokenizer(header, ",", true); 
+        while (token.hasMoreTokens()) {
+            String field = token.nextToken();
+            StringTokenizer token2 = new StringTokenizer(field, ":", true); 
+            token2.nextToken();
+            
         }
-        if (!registros.isEmpty()) {
-            for (int i = 0; i < registros.size(); i++) {
-                writer.append(registros.get(i) + "\n");
-            }
-        }
-        writer.close();
+        archivo.setName(f.getName());
+        
+        
+        return archivo;
     }
 
     public void listar() {

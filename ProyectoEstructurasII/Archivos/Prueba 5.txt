@@ -1,1 +1,0 @@
-Nombre: null[234], Edad: null[343], 

@@ -1,1 +1,0 @@
-edad: null[34], Nombre: null[32], apelido: null[43], 

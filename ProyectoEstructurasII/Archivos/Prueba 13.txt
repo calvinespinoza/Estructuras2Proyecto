@@ -1,0 +1,2 @@
+Nombre: null[12], Apellido: null[12], Ciudad: null[12], 
+Calvin|Espinoza|Tegucigalpa|Mario|Sanchez|null|Calvin|Enrique|Tegucigalpa|Mario|Sanchez|San Pedro|
