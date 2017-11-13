@@ -108,7 +108,7 @@ public class Archivos {
     public Archivos read(String path) throws IOException {
         //String path = "./Archivos/" + name + ".txt";
         File f = new File(path);
-        Archivos archivo = null;
+        Archivos archivo = new Archivos();
         BufferedReader reader = new BufferedReader(new FileReader(f));
         Scanner sc = new Scanner(f);
         Scanner sc2 = new Scanner(f);
@@ -116,18 +116,29 @@ public class Archivos {
         String header = sc2.nextLine();
         //HEADER
         StringTokenizer token = new StringTokenizer(header, ",", true);
+
         while (token.hasMoreTokens()) {
             StringTokenizer token2 = new StringTokenizer(token.nextToken(), ":[]", true);
             String fieldname = token2.nextToken();
-            String fieldtype = token2.nextToken().substring(1);
-            int length = Integer.parseInt(token2.nextToken());
-            archivo.addCampo(new Campos(fieldname, fieldtype, length, false));
+            if (token2.hasMoreTokens()) {
+                System.out.println(fieldname);
+                token2.nextToken();
+                String fieldtype = token2.nextToken().substring(1);
+                System.out.println(fieldtype);
+                token2.nextToken();
+                int length = Integer.parseInt(token2.nextToken());
+                System.out.println(length);
+                token2.nextToken();
+                archivo.addCampo(new Campos(fieldname, fieldtype, length, false));
+                token.nextToken();
+
+            }
         }
         //REGISTROS
-        
+
         while (sc2.hasNextLine()) {
             String registry = sc2.nextLine();
-            StringTokenizer token3 = new StringTokenizer(registry,"|",true);
+            StringTokenizer token3 = new StringTokenizer(registry, "|", true);
             archivo.addRegistro(token3.nextToken());
         }
 

@@ -1,4 +1,4 @@
-Nombre: null[12], Apellido: null[12], Ciudad: null[12], Identidad: null[23], 
+Nombre: char[12], Apellido: char[12], Ciudad: char[12], Identidad: int[23], 
 Calvin|Espinoza|Teg|1998|
 Rebeka|Houghton|SPS|1996|
 Mario|Sanchez|Teg|null|

@@ -953,13 +953,13 @@ public class GUI extends javax.swing.JFrame {
         jd_addCampos.setVisible(false);
         boolean key;
         String type = bg_type.getSelection().getActionCommand();
-        
+
         if (chb_key.isSelected()) {
             key = true;
         } else {
             key = false;
         }
-        Campos c = new Campos(tf_camposName.getText(), type , Integer.parseInt(tf_camposLength.getText()), key);
+        Campos c = new Campos(tf_camposName.getText(), type, Integer.parseInt(tf_camposLength.getText()), key);
         c.setType(type);
         archivo.addCampo(c);
         // jd_addFile.setVisible(true);
@@ -1058,8 +1058,8 @@ public class GUI extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        filename = archivo.getName();
-        archivo = file;        
+        filename = file.getName();
+        archivo = file;
         jl_openfile.setText(filename.substring(0, filename.length() - 4));
     }//GEN-LAST:event_jButton9ActionPerformed
 
@@ -1071,11 +1071,16 @@ public class GUI extends javax.swing.JFrame {
         jd_fileopen.setVisible(true);
         this.setVisible(false);
 
-       
-
         for (int i = 0; i < archivo.getCampos().size(); i++) {
             String str = archivo.getCampos().get(i).getName();
             model.addColumn(str);
+        }
+
+        if (!archivo.getRegistros().isEmpty()) {
+            for (int i = 0; i < archivo.getRegistros().size(); i++) {
+                String str = archivo.getRegistros().get(i);
+                model.addColumn(str);
+            }
         }
         jt_info.setModel(model);
     }//GEN-LAST:event_bt_fileeditActionPerformed
@@ -1209,13 +1214,13 @@ public class GUI extends javax.swing.JFrame {
             sb = new StringBuilder();
             for (int j = 0; j < model.getColumnCount(); j++) {
                 if (j == model.getColumnCount()) {
-                    sb.append((String)model.getValueAt(i, j));
+                    sb.append((String) model.getValueAt(i, j));
                 } else {
-                    sb.append((String)model.getValueAt(i, j)).append("|");
+                    sb.append((String) model.getValueAt(i, j)).append("|");
                 }
             }
             archivo.addRegistro(sb.toString());
-            
+
         }
         try {
             archivo.save();
@@ -1342,7 +1347,7 @@ public class GUI extends javax.swing.JFrame {
     Archivos archivo;
     String filename;
     Campos tempCamp;
-     DefaultTableModel model = new DefaultTableModel();
+    DefaultTableModel model = new DefaultTableModel();
 
     public void exit() {
         int p = JOptionPane.showConfirmDialog(this, "Are you sure you want to quit");
