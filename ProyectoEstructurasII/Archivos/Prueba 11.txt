@@ -1,2 +1,0 @@
-Nombre: null[23], Apellido: null[32], Ciudad: null[22], Identidad: null[32], 
-Calvi, Espinoza, 12, 1992, Mario, Sanchez, 23, 1223, Mario, Sanchez, 23, 1223, 

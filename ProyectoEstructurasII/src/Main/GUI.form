@@ -934,7 +934,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="2" attributes="0">
-                          <Component id="jButton13" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="bt_savereg" alignment="2" min="-2" max="-2" attributes="0"/>
                           <Component id="bt_addregistry" alignment="2" min="-2" max="-2" attributes="0"/>
                           <Component id="bt_removereg" alignment="2" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -955,7 +955,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="bt_addregistry" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton13" min="-2" max="-2" attributes="0"/>
+                              <Component id="bt_savereg" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -1081,7 +1081,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_removeregActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton13">
+            <Component class="javax.swing.JButton" name="bt_savereg">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1099,7 +1099,7 @@
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton13ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_saveregActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="bt_addregistry">

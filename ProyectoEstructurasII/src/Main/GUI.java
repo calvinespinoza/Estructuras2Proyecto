@@ -109,7 +109,7 @@ public class GUI extends javax.swing.JFrame {
         jButton11 = new javax.swing.JButton();
         bt_backtomain = new javax.swing.JButton();
         bt_removereg = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
+        bt_savereg = new javax.swing.JButton();
         bt_addregistry = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         mainPanel = new javax.swing.JPanel();
@@ -737,15 +737,15 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jButton13.setBackground(new java.awt.Color(255, 255, 255));
-        jButton13.setFont(new java.awt.Font("Gotham Medium", 0, 13)); // NOI18N
-        jButton13.setForeground(new java.awt.Color(0, 102, 153));
-        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ic_check_circle_white_24dp_2x.png"))); // NOI18N
-        jButton13.setBorderPainted(false);
-        jButton13.setContentAreaFilled(false);
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
+        bt_savereg.setBackground(new java.awt.Color(255, 255, 255));
+        bt_savereg.setFont(new java.awt.Font("Gotham Medium", 0, 13)); // NOI18N
+        bt_savereg.setForeground(new java.awt.Color(0, 102, 153));
+        bt_savereg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ic_check_circle_white_24dp_2x.png"))); // NOI18N
+        bt_savereg.setBorderPainted(false);
+        bt_savereg.setContentAreaFilled(false);
+        bt_savereg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
+                bt_saveregActionPerformed(evt);
             }
         });
 
@@ -777,7 +777,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jButton13)
+                    .addComponent(bt_savereg)
                     .addComponent(bt_addregistry)
                     .addComponent(bt_removereg))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -795,7 +795,7 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bt_addregistry)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton13)
+                        .addComponent(bt_savereg)
                         .addGap(15, 15, 15))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1050,7 +1050,16 @@ public class GUI extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
+        archivo = new Archivos();
+        Archivos file = new Archivos();
         String path = load();
+        try {
+            file = archivo.read(path);
+        } catch (IOException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        filename = archivo.getName();
+        archivo = file;        
         jl_openfile.setText(filename.substring(0, filename.length() - 4));
     }//GEN-LAST:event_jButton9ActionPerformed
 
@@ -1193,19 +1202,27 @@ public class GUI extends javax.swing.JFrame {
         model.removeRow(row);
     }//GEN-LAST:event_bt_removeregActionPerformed
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+    private void bt_saveregActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_saveregActionPerformed
         // TODO add your handling code here:
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < model.getRowCount(); i++) {
+            sb = new StringBuilder();
             for (int j = 0; j < model.getColumnCount(); j++) {
-                archivo.addRegistro((String)model.getValueAt(i, j));
+                if (j == model.getColumnCount()) {
+                    sb.append((String)model.getValueAt(i, j));
+                } else {
+                    sb.append((String)model.getValueAt(i, j)).append("|");
+                }
             }
+            archivo.addRegistro(sb.toString());
+            
         }
         try {
             archivo.save();
         } catch (IOException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton13ActionPerformed
+    }//GEN-LAST:event_bt_saveregActionPerformed
 
     private void bt_addregistryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_addregistryActionPerformed
         // TODO add your handling code here:
@@ -1262,13 +1279,13 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton bt_fileedit;
     private javax.swing.JButton bt_removeCampos;
     private javax.swing.JButton bt_removereg;
+    private javax.swing.JButton bt_savereg;
     private javax.swing.JComboBox<String> cb_campos;
     private javax.swing.JCheckBox chb_key;
     private javax.swing.JCheckBox chb_keyEdit;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

@@ -57,7 +57,7 @@ public class Archivos {
     public void setRegistros(ArrayList<String> registros) {
         this.registros = registros;
     }
-    
+
     public void addRegistro(String r) {
         this.registros.add(r);
     }
@@ -69,22 +69,20 @@ public class Archivos {
         if (!campos.isEmpty()) {
             for (int i = 0; i < campos.size(); i++) {
                 Campos c = campos.get(i);
-                writer.append(c.toString()+ ", ");
+                writer.append(c.toString() + ", ");
             }
 
         }
         try {
-        if (!registros.isEmpty()) {
-            writer.append("\n");
-            for (int i = 0; i < registros.size(); i++) {
-                writer.append(registros.get(i) + "|");
+            if (!registros.isEmpty()) {
+                writer.append("\n");
+                for (int i = 0; i < registros.size(); i++) {
+                    writer.append(registros.get(i) + "\n");
+                }
+
             }
-            writer.append("\n");
-           
-        }
-        } catch (Exception NullException)
-        {
-            
+        } catch (Exception NullException) {
+
         }
         writer.close();
     }
@@ -114,18 +112,27 @@ public class Archivos {
         BufferedReader reader = new BufferedReader(new FileReader(f));
         Scanner sc = new Scanner(f);
         Scanner sc2 = new Scanner(f);
-        
-        String header = sc2.nextLine();      
-        StringTokenizer token = new StringTokenizer(header, ",", true); 
+
+        String header = sc2.nextLine();
+        //HEADER
+        StringTokenizer token = new StringTokenizer(header, ",", true);
         while (token.hasMoreTokens()) {
-            String field = token.nextToken();
-            StringTokenizer token2 = new StringTokenizer(field, ":", true); 
-            token2.nextToken();
-            
+            StringTokenizer token2 = new StringTokenizer(token.nextToken(), ":[]", true);
+            String fieldname = token2.nextToken();
+            String fieldtype = token2.nextToken().substring(1);
+            int length = Integer.parseInt(token2.nextToken());
+            archivo.addCampo(new Campos(fieldname, fieldtype, length, false));
         }
+        //REGISTROS
+        
+        while (sc2.hasNextLine()) {
+            String registry = sc2.nextLine();
+            StringTokenizer token3 = new StringTokenizer(registry,"|",true);
+            archivo.addRegistro(token3.nextToken());
+        }
+
         archivo.setName(f.getName());
-        
-        
+
         return archivo;
     }
 
