@@ -16,6 +16,7 @@ public class Archivos {
 
     String name;
     ArrayList<Campos> campos = new ArrayList();
+    ArrayList<String> registros = new ArrayList();
 
     public Archivos() {
     }
@@ -45,7 +46,52 @@ public class Archivos {
         this.campos.add(c);
     }
 
+    public ArrayList<String> getRegistros() {
+        return registros;
+    }
+
+    public void setRegistros(ArrayList<String> registros) {
+        this.registros = registros;
+    }
+
     public void save() throws IOException {
+        String path = "./Archivos/" + name + ".txt";
+        File f = new File(path);
+        BufferedWriter writer = new BufferedWriter(new FileWriter(f));
+        if (!campos.isEmpty()) {
+            for (int i = 0; i < campos.size(); i++) {
+                Campos c = campos.get(i);
+                writer.append(c.getName() + ": " + c.getType().toString() + "[" + c.getLength() + "], ");
+            }
+
+        }
+        if (!registros.isEmpty()) {
+            for (int i = 0; i < registros.size(); i++) {
+                writer.append(registros.get(i) + "\n");
+            }
+        }
+        writer.close();
+    }
+
+    public void save2() throws IOException {
+        String path = "./Archivos/" + name + ".txt";
+        File f = new File(path);
+        BufferedWriter writer = new BufferedWriter(new FileWriter(f));
+        if (!campos.isEmpty()) {
+            for (int i = 0; i < campos.size(); i++) {
+                writer.append(campos.get(i).getName() + ": ");
+            }
+
+        }
+        if (!registros.isEmpty()) {
+            for (int i = 0; i < registros.size(); i++) {
+                writer.append(registros.get(i) + "\n");
+            }
+        }
+        writer.close();
+    }
+
+    public void read() throws IOException {
         String path = "./Archivos/" + name + ".txt";
         File f = new File(path);
         BufferedWriter writer = new BufferedWriter(new FileWriter(f));
@@ -54,18 +100,18 @@ public class Archivos {
                 writer.append(campos.get(i).getName() + ": ");
             }
         }
+        if (!registros.isEmpty()) {
+            for (int i = 0; i < registros.size(); i++) {
+                writer.append(registros.get(i) + "\n");
+            }
+        }
         writer.close();
     }
 
-    
-    
-    public void listar(){
+    public void listar() {
         for (int i = 0; i < campos.size(); i++) {
             System.out.println(campos);
         }
     }
-    
-    
+
 }
-
-
