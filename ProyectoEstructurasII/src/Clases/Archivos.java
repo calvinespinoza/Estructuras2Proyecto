@@ -61,7 +61,7 @@ public class Archivos {
         if (!campos.isEmpty()) {
             for (int i = 0; i < campos.size(); i++) {
                 Campos c = campos.get(i);
-                writer.append(c.getName() + ": " + c.getType() + "[" + c.getLength() + "], ");
+                writer.append(c.toString()+ ", ");
             }
 
         }

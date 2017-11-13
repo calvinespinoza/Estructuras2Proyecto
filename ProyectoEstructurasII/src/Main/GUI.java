@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -107,6 +108,7 @@ public class GUI extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         bt_backtomain = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
         mainPanel = new javax.swing.JPanel();
         jb_addFile = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -668,6 +670,9 @@ public class GUI extends javax.swing.JFrame {
 
             }
         ));
+        jt_info.setGridColor(new java.awt.Color(0, 102, 153));
+        jt_info.setSelectionBackground(new java.awt.Color(0, 102, 153));
+        jt_info.setShowGrid(true);
         jScrollPane1.setViewportView(jt_info);
 
         jPanel7.setBackground(new java.awt.Color(0, 86, 138));
@@ -717,23 +722,41 @@ public class GUI extends javax.swing.JFrame {
             .addComponent(bt_backtomain)
         );
 
+        jButton12.setBackground(new java.awt.Color(255, 255, 255));
+        jButton12.setFont(new java.awt.Font("Gotham Medium", 0, 13)); // NOI18N
+        jButton12.setForeground(new java.awt.Color(0, 102, 153));
+        jButton12.setText("Nuevo registro");
+        jButton12.setContentAreaFilled(false);
+        jButton12.setOpaque(false);
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
+                .addGap(70, 70, 70)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton12)
+                .addGap(224, 224, 224))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addComponent(jButton12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
+                .addGap(39, 39, 39))
         );
 
         javax.swing.GroupLayout jd_fileopenLayout = new javax.swing.GroupLayout(jd_fileopen.getContentPane());
@@ -886,12 +909,13 @@ public class GUI extends javax.swing.JFrame {
     private void jb_addFile1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_addFile1ActionPerformed
         jd_addCampos.setVisible(false);
         boolean key;
+        String type = bg_type.getSelection().getActionCommand();
         if (chb_key.isSelected()) {
             key = true;
         } else {
             key = false;
         }
-        Campos c = new Campos(tf_camposName.getText(), bg_type.getSelection().getActionCommand(), Integer.parseInt(tf_camposLength.getText()), key);
+        Campos c = new Campos(tf_camposName.getText(), type , Integer.parseInt(tf_camposLength.getText()), key);
         archivo.addCampos(c);
         // jd_addFile.setVisible(true);
         //Talvez haya una manera m[as eficiente de hacer esto
@@ -993,13 +1017,13 @@ public class GUI extends javax.swing.JFrame {
         jd_fileopen.setVisible(true);
         this.setVisible(false);
 
-        DefaultTableModel model = new DefaultTableModel();
+       
 
         for (int i = 0; i < archivo.getCampos().size(); i++) {
             String str = archivo.getCampos().get(i).getName();
             model.addColumn(str);
         }
-
+        jt_info.setModel(model);
     }//GEN-LAST:event_bt_fileeditActionPerformed
 
     private void bt_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_editActionPerformed
@@ -1117,6 +1141,12 @@ public class GUI extends javax.swing.JFrame {
         this.setVisible(true);
     }//GEN-LAST:event_bt_backtomainActionPerformed
 
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        // TODO add your handling code here:
+        Object[] rowData = null;
+        model.addRow(rowData);
+    }//GEN-LAST:event_jButton12ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1170,6 +1200,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1225,6 +1256,7 @@ public class GUI extends javax.swing.JFrame {
     Archivos archivo;
     String filename;
     Campos tempCamp;
+     DefaultTableModel model = new DefaultTableModel();
 
     public void exit() {
         int p = JOptionPane.showConfirmDialog(this, "Are you sure you want to quit");
