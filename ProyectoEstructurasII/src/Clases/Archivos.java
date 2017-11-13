@@ -61,14 +61,19 @@ public class Archivos {
         if (!campos.isEmpty()) {
             for (int i = 0; i < campos.size(); i++) {
                 Campos c = campos.get(i);
-                writer.append(c.getName() + ": " + c.getType().toString() + "[" + c.getLength() + "], ");
+                writer.append(c.getName() + ": " + c.getType() + "[" + c.getLength() + "], ");
             }
 
         }
+        try {
         if (!registros.isEmpty()) {
             for (int i = 0; i < registros.size(); i++) {
                 writer.append(registros.get(i) + "\n");
             }
+        }
+        } catch (Exception NullException)
+        {
+            
         }
         writer.close();
     }
