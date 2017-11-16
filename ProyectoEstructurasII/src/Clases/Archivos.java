@@ -108,27 +108,43 @@ public class Archivos {
     public Archivos read(String path) throws IOException {
         //String path = "./Archivos/" + name + ".txt";
         File f = new File(path);
+<<<<<<< HEAD
         Archivos archivo = null;
         //BufferedReader reader = new BufferedReader(new FileReader(f));
         //Scanner sc = new Scanner(f);
+=======
+        Archivos archivo = new Archivos();
+        BufferedReader reader = new BufferedReader(new FileReader(f));
+        Scanner sc = new Scanner(f);
+>>>>>>> abe94ced093193135bb15932ce2673a047ca9045
         Scanner sc2 = new Scanner(f);
 
         String header = sc2.nextLine();
         //HEADER
         StringTokenizer token = new StringTokenizer(header, ",", true);
+
         while (token.hasMoreTokens()) {
             StringTokenizer token2 = new StringTokenizer(token.nextToken(), ":[]", true);
             String fieldname = token2.nextToken();
-            String fieldtype = token2.nextToken().substring(1);
-            int length = Integer.parseInt(token2.nextToken());
-            archivo.addCampo(new Campos(fieldname, fieldtype, length, false));
+            if (token2.hasMoreTokens()) {
+                //System.out.println(fieldname);
+                token2.nextToken();
+                String fieldtype = token2.nextToken().substring(1);
+                //System.out.println(fieldtype);
+                token2.nextToken();
+                int length = Integer.parseInt(token2.nextToken());
+                //System.out.println(length);
+                token2.nextToken();
+                archivo.addCampo(new Campos(fieldname, fieldtype, length, false));
+                token.nextToken();
+
+            }
         }
         //REGISTROS
-        
+
         while (sc2.hasNextLine()) {
             String registry = sc2.nextLine();
-            StringTokenizer token3 = new StringTokenizer(registry,"|",true);
-            archivo.addRegistro(token3.nextToken());
+            archivo.addRegistro(registry);
         }
 
         archivo.setName(f.getName());

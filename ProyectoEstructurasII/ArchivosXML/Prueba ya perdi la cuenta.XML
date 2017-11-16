@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+	<Key>
+		<int [1]> 
+			<Uvuveuve>Aqui va el nombre de cada registro</Uvuveuve>
+		</int>
+	</Key>
+	<Key>
+		<char [33]> 
+			<Campo2>Aqui va el nombre de cada registro</Campo2>
+		</char>
+	</Key>
+	<Key>
+		<double [54]> 
+			<Calvin es gay>Aqui va el nombre de cada registro</Calvin es gay>
+		</double>
+	</Key>
