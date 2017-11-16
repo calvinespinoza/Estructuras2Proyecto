@@ -109,8 +109,8 @@ public class Archivos {
         //String path = "./Archivos/" + name + ".txt";
         File f = new File(path);
         Archivos archivo = null;
-        BufferedReader reader = new BufferedReader(new FileReader(f));
-        Scanner sc = new Scanner(f);
+        //BufferedReader reader = new BufferedReader(new FileReader(f));
+        //Scanner sc = new Scanner(f);
         Scanner sc2 = new Scanner(f);
 
         String header = sc2.nextLine();
