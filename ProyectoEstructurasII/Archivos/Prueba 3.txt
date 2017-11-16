@@ -1,1 +1,0 @@
-Nombre: char[12], Apellido: int[23], 
