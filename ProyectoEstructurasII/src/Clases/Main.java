@@ -19,12 +19,17 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String key = sc.nextLine();
         
-        BTree bt = new BTree(4);
-    }
-    
-    public void insert(int key, BTree bt)
-    {
-        bt.addLlave(key);
+        BTree bt = new BTree(3);
         
+        bt.insert(1);
+        bt.insert(2);
+        bt.insert(3);
+        bt.insert(4);
+        bt.insert(5);
+        bt.insert(6);
+        bt.insert(7);
+        bt.insert(8);
+        
+        bt.imprimir();
     }
 }
