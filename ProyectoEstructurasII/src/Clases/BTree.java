@@ -27,6 +27,10 @@ public class BTree {
     public BTree() {
     }
 
+    public BTree (int orden)
+    {
+        this.orden = orden;
+    }
     public int getOrden() {
         return orden;
     }
