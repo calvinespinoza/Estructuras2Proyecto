@@ -122,7 +122,7 @@ public class BNode {
             while (indice >= 0 && llaves.get(indice) > llave) {
                 indice--;
             }
-            
+            llaves.add(llave);
             llaves.set(indice + 1, llave);
             
         } else {
