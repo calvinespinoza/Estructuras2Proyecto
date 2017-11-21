@@ -43,13 +43,13 @@ public class BTree {
     public void insert(int key) {
         if (raiz == null) {
             raiz = new BNode(T, true);
-            raiz.getLlaves().add(key);
+            raiz.getLlaves().set(0, key);
             //raiz.number_keys = 1;
 
-        } else if (raiz.getLlaves().size() == 2 * T - 1) {
+        } else if (raiz.keyCount() == 2 * T - 1) {
             BNode nodo = new BNode(T, false);
 
-            nodo.getNodos().set(0, nodo);
+            nodo.getNodos().set(0, raiz);
             nodo.split(0, raiz);
 
 
