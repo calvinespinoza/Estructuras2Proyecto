@@ -5,8 +5,6 @@
  */
 package Clases;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author calvinespinoza
@@ -15,94 +13,62 @@ import java.util.ArrayList;
 
 public class BTree { 
 
-    private int orden;
-    //private int numeroLLaves;
-    private ArrayList<BTree> nodos = new ArrayList();
-    private ArrayList<Integer> llaves = new ArrayList();
-    boolean hoja;
-
-    public BTree(int orden, boolean hoja) {
-        this.orden = orden;
-        this.hoja = hoja;
-    }
+    private BNode raiz;
+    private int T;
 
     public BTree() {
     }
 
-    public int getOrden() {
-        return orden;
+    public BTree(int T) {
+        this.raiz = null;
+        this.T = T;
     }
 
-    public void setOrden(int orden) {
-        this.orden = orden;
+    public BNode getRoot() {
+        return raiz;
     }
 
-    public ArrayList getBTree() {
-        return nodos;
+    public void setRoot(BNode root) {
+        this.raiz = root;
     }
 
-    public void setBTree(ArrayList BTree) {
-        this.nodos = BTree;
+    public int getT() {
+        return T;
     }
 
-    public void addBTree(BTree BTree) {
-        nodos.add(BTree);
+    public void setT(int T) {
+        this.T = T;
     }
 
-    public ArrayList getLlaves() {
-        return llaves;
-    }
+    public void insert(int key) {
+        if (raiz == null) {
+            raiz = new BNode(T, true);
+            raiz.getLlaves().add(key);
+            //raiz.number_keys = 1;
 
-    public void setLlaves(ArrayList llaves) {
-        this.llaves = llaves;
-    }
+        } else if (raiz.getLlaves().size() == 2 * T - 1) {
+            BNode nodo = new BNode(T, false);
+            //en que parte agregamos al arraylist?
+            nodo.getNodos().set(0, nodo);
+            nodo.split(0, raiz);
 
-    public void addLlave(int llave) {
-        llaves.add(llave);
-    }
-
-    public boolean isHoja() {
-        return hoja;
-    }
-
-    public void setHoja(boolean hoja) {
-        this.hoja = hoja;
-    }
-
-    public void recorrido() {
-        int i;
-        for (i = 0; i < llaves.size(); i++) {
-            if (!hoja) {
-                nodos.get(i).recorrido();
-                System.out.println(" " + llaves.get(i));
+            int cont = 0;
+            if ((int) nodo.getLlaves().get(0) < key) {
+                cont++;
             }
+
+            nodo.getNodos().get(cont).insertar2(key);//nodos.get(cont)
+
+            raiz = nodo;
+        } else {
+            raiz.insertar2(key);
         }
 
-        if (!hoja) {
-            nodos.get(i).recorrido();
-        }
     }
 
-    public BTree busqueda(int llave) {
-        int i = 0;
-        
-        while (i < llaves.size() && llave > llaves.get(i))
-        {
-            i++;
+    public void imprimir() {
+        if (raiz != null) {
+            raiz.recorrido();
         }
-        
-        if (llaves.get(i) == llave)
-        {
-            return this;
-        }
-        
-        if (hoja)
-        {
-            return null;
-        }
-        
-        return nodos.get(i).busqueda(llave);
     }
-    
-    
 }
