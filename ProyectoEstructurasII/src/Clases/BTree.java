@@ -72,6 +72,7 @@ public class BTree {
 
     public void imprimir() {
         if (raiz != null) {
+            System.out.println("Recorrido del arbol: ");
             raiz.recorrido();
         }
     }

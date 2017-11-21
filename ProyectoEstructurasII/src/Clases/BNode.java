@@ -110,13 +110,13 @@ public class BNode {
                     nodos.get(i).recorrido();
                 }
             }
-            System.out.println(" " + llaves.get(i));
-
+            System.out.print(llaves.get(i) + " ");
         }
 
         if (!hoja) {
             nodos.get(i).recorrido();
         }
+        System.out.println("");
     }
 
     public BNode busqueda(int llave) {
@@ -138,7 +138,6 @@ public class BNode {
     }
 
     public void insertar2(int llave) {
-        System.out.println("hola");
         int indice = keyCount() - 1;
 
         if (hoja) {
@@ -160,7 +159,7 @@ public class BNode {
                     indice++;
                 }
             }
-            System.out.println(nodos);
+            //System.out.println(nodos);
             nodos.get(indice + 1).insertar2(llave);
         }
 
@@ -188,7 +187,7 @@ public class BNode {
         nodos.set(indice + 1, nodo2);
 
         for (int i = keyCount() - 1; i >= indice; i--) {
-            llaves.set(i + 1, i);
+            llaves.set(i + 1, llaves.get(i));
         }
 
         llaves.set(indice, (Integer) nodo.getLlaves().get(gradoMinimo - 1));
