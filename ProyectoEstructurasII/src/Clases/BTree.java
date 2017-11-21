@@ -10,7 +10,6 @@ package Clases;
  * @author calvinespinoza
  */
 
-
 public class BTree { 
 
     private BNode raiz;
@@ -40,6 +39,7 @@ public class BTree {
         this.T = T;
     }
 
+
     public void insert(int key) {
         if (raiz == null) {
             raiz = new BNode(T, true);
@@ -48,16 +48,20 @@ public class BTree {
 
         } else if (raiz.getLlaves().size() == 2 * T - 1) {
             BNode nodo = new BNode(T, false);
-            //en que parte agregamos al arraylist?
+
             nodo.getNodos().set(0, nodo);
             nodo.split(0, raiz);
+
 
             int cont = 0;
             if ((int) nodo.getLlaves().get(0) < key) {
                 cont++;
             }
 
+
             nodo.getNodos().get(cont).insertar2(key);//nodos.get(cont)
+
+            //nodo.getNodos().get(0).insertar2(key);
 
             raiz = nodo;
         } else {
