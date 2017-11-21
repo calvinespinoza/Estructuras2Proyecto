@@ -17,7 +17,7 @@ public class Main {
     {
         System.out.println("Insert key: ");
         Scanner sc = new Scanner(System.in);
-        String key = sc.nextLine();
+        //String key = sc.nextLine();
         
         BTree bt = new BTree(4);
         

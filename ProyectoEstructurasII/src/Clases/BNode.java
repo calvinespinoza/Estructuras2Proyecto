@@ -98,17 +98,20 @@ public class BNode {
                 count++;
             }
         }
-        System.out.println(llaves);
+       // System.out.println("llaves: " + llaves);
         return count;
     }
 
     public void recorrido() {
         int i;
-        for (i = 0; i < llaves.size(); i++) {
+        for (i = 0; i < keyCount(); i++) {
             if (!hoja) {
-                nodos.get(i).recorrido();
-                System.out.println(" " + llaves.get(i));
+                if(nodos.get(i) != null){
+                    nodos.get(i).recorrido();
+                }
             }
+            System.out.println(" " + llaves.get(i));
+
         }
 
         if (!hoja) {
