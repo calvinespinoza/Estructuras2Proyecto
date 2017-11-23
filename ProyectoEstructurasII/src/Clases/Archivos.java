@@ -152,4 +152,36 @@ public class Archivos {
         }
     }
 
+    public void saveXML() throws IOException {
+        String path = "./ArchivosXML/" + name + ".XML";
+        System.out.println("Name: " + name);
+        File f = new File(path);
+        String saving = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE XML>\n\n";
+        BufferedWriter writer = new BufferedWriter(new FileWriter(f));
+        if (!campos.isEmpty()) {
+            for (int i = 0; i < campos.size(); i++) {
+                if (campos.get(i).isKey() == true) {
+                    saving += "\t<Key>\n";
+                }else{
+                    saving += "\t<NoKey>\n";
+                }
+                saving += "\t\t<" + campos.get(i).getType() + " [" + campos.get(i).getLength() + "]> \n";
+                for (int j = 0; j < registros.size(); j++) {
+                    saving += "\t\t\t<" + campos.get(i).getName() + ">" + registros.get(i) + "</" + campos.get(i).getName() + ">\n";
+                }
+                saving += "\t\t</" + campos.get(i).getType() + ">\n";
+                if (campos.get(i).isKey() == true) {
+                    saving += "\t</Key>\n";
+                }else{
+                    saving += "\t</NoKey>\n";
+                }
+                //saving = "";
+                //writer.append(saving);
+            }
+            writer.write(saving);
+
+        }
+
+        writer.close();
+    }
 }

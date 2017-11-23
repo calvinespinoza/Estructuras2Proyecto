@@ -1,4 +1,0 @@
-Nombre: char[12], Apellido: char[12], Ciudad: char[12], Identidad: int[23], 
-Calvin|Espinoza|Teg|1998|
-Rebeka|Houghton|SPS|1996|
-Mario|Sanchez|Teg|1997|

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE XML>
+
+	<Key>
+		<int [23]> 
+		</int>
+	</Key>
+	<NoKey>
+		<double [232322]> 
+		</double>
+	</NoKey>
+	<NoKey>
+		<double [222]> 
+		</double>
+	</NoKey>

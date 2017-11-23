@@ -40,16 +40,22 @@ public class XML {
             System.out.println("Longitud");
             length = sc.nextInt();
             sc = new Scanner(System.in);
-            key = true;
+            System.out.println("es llave s/n");
+            if (sc.nextLine().charAt(0) == 's') {
+                key = true;
+
+            }else{
+                key = false;
+            }
             System.out.println("Desea agregar otro campo? s/n");
             c = new Campos(name, type, length, key);
             campos.add(c);
             resp = sc.next().charAt(0);
         }
-        save2(key);
+        saveXML(key);
     }
 
-    public static void save2(boolean key) throws IOException {
+    public static void saveXML(boolean key) throws IOException {
         String path = "./ArchivosXML/" + fileName + ".XML";
         System.out.println("Name: " + fileName);
         File f = new File(path);

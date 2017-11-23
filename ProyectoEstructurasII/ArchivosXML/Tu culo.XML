@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+		<double [25]> 
+			<Culo grande >Aqui va el nombre de cada registro</Culo grande >
+		</double>
+		<int [90]> 
+			<Culo2>Aqui va el nombre de cada registro</Culo2>
+		</int>
+		<char [1200]> 
+			<Culo3>Aqui va el nombre de cada registro</Culo3>
+		</char>
