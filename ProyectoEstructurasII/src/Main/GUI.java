@@ -599,7 +599,7 @@ public class GUI extends javax.swing.JFrame {
 
         bg_type.add(chb_keyEdit);
         chb_keyEdit.setContentAreaFilled(false);
-        chb_key.setVisible(false);
+        chb_key.setVisible(true);
 
         jb_addFile2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ic_mode_edit_white_24dp_2x.png"))); // NOI18N
         jb_addFile2.setBorder(null);
@@ -962,12 +962,13 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)))
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                    .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(36, 36, 36))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jb_addFile, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
@@ -1007,8 +1008,9 @@ public class GUI extends javax.swing.JFrame {
         boolean key;
         String type = bg_type.getSelection().getActionCommand();
 
-        if (chb_key.isSelected()) {
+        if (chb_key.isSelected() && !hasKey) {
             key = true;
+            hasKey = true;
         } else {
             key = false;
         }
@@ -1115,6 +1117,9 @@ public class GUI extends javax.swing.JFrame {
         }
         filename = file.getName();
         archivo = file;
+        System.out.println(archivo.getName());
+        model = new DefaultTableModel();
+        model.addColumn("fuckkk");
         jl_openfile.setText(filename.substring(0, filename.length() - 4));
     }//GEN-LAST:event_jButton9ActionPerformed
 
@@ -1147,9 +1152,9 @@ public class GUI extends javax.swing.JFrame {
                             tok.nextToken();
                         }
                     }
-                }
-                jt_info.setModel(model);
+                } 
             }
+            jt_info.setModel(model);
         } else {
             JOptionPane.showMessageDialog(null, "Please open a file");
         }
@@ -1233,8 +1238,14 @@ public class GUI extends javax.swing.JFrame {
 
         jd_addFile.dispose();
         try {
-            archivo.save();
-            archivo.saveXML();
+            if (hasKey) {
+                archivo.save();
+                archivo.saveXML();
+            } else {
+                JOptionPane.showMessageDialog(null, "No key has been selected");
+
+            }
+
         } catch (IOException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1242,14 +1253,14 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_completeFileActionPerformed
 
     private void bt_removeCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_removeCamposActionPerformed
-        int index =cb_campos.getSelectedIndex();
+        int index = cb_campos.getSelectedIndex();
         archivo.getCampos().remove(index);
         DefaultComboBoxModel<Campos> model = new DefaultComboBoxModel();
         for (int i = 0; i < archivo.getCampos().size(); i++) {
             model.addElement(archivo.getCampos().get(i));
         }
         cb_campos = new JComboBox(model);
-       
+
     }//GEN-LAST:event_bt_removeCamposActionPerformed
 
     private void bt_addCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_addCamposActionPerformed
@@ -1303,7 +1314,7 @@ public class GUI extends javax.swing.JFrame {
         }
         try {
             archivo.save();
-           
+
         } catch (IOException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1463,6 +1474,7 @@ public class GUI extends javax.swing.JFrame {
     String filename;
     Campos tempCamp;
     DefaultTableModel model = new DefaultTableModel();
+    boolean hasKey;
 
     public void exit() {
         int p = JOptionPane.showConfirmDialog(this, "Are you sure you want to quit");
