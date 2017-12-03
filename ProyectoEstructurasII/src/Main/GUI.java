@@ -7,8 +7,6 @@ package Main;
 
 import Clases.Archivos;
 import Clases.Campos;
-import java.awt.Graphics;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.StringTokenizer;
@@ -21,7 +19,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -1119,7 +1116,6 @@ public class GUI extends javax.swing.JFrame {
         archivo = file;
         System.out.println(archivo.getName());
         model = new DefaultTableModel();
-        model.addColumn("fuckkk");
         jl_openfile.setText(filename.substring(0, filename.length() - 4));
     }//GEN-LAST:event_jButton9ActionPerformed
 
@@ -1152,7 +1148,7 @@ public class GUI extends javax.swing.JFrame {
                             tok.nextToken();
                         }
                     }
-                } 
+                }
             }
             jt_info.setModel(model);
         } else {
@@ -1227,29 +1223,30 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_createFileActionPerformed
 
     private void jb_completeFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_completeFileActionPerformed
-        cb_campos.setVisible(false);
-        bt_addCampos.setVisible(false);
-        bt_removeCampos.setVisible(false);
-        bt_edit.setVisible(false);
-        jl_fileName.setText("FILE NAME");
-        jl_fileName.setVisible(true);
-        bt_createFile.setVisible(true);
-        tf_name.setVisible(true);
 
-        jd_addFile.dispose();
         try {
             if (hasKey) {
+                cb_campos.setVisible(false);
+                bt_addCampos.setVisible(false);
+                bt_removeCampos.setVisible(false);
+                bt_edit.setVisible(false);
+                jl_fileName.setText("FILE NAME");
+                jl_fileName.setVisible(true);
+                bt_createFile.setVisible(true);
+                tf_name.setVisible(true);
+                jd_addFile.dispose();
                 archivo.save();
                 archivo.saveXML();
-            } else {
-                JOptionPane.showMessageDialog(null, "No key has been selected");
+                this.setVisible(true);
 
+            } else {
+                JOptionPane.showMessageDialog(jd_fileopen, "No key has been selected");
             }
 
         } catch (IOException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.setVisible(true);
+
     }//GEN-LAST:event_jb_completeFileActionPerformed
 
     private void bt_removeCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_removeCamposActionPerformed

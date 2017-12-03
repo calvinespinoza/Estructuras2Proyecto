@@ -1,0 +1,6 @@
+Nombre: char[23],  Identidad: int[32], 
+Calvin|null|
+Calvin|1998|
+Enrique|null|
+Calvin|1998|
+Enrique|null|

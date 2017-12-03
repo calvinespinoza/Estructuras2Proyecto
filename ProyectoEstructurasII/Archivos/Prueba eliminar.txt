@@ -1,1 +1,0 @@
-campo1: int[13232], campo4: char[23], 
