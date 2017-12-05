@@ -1137,17 +1137,51 @@ public class GUI extends javax.swing.JFrame {
 
                 for (int i = 0; i < archivo.getRegistros().size(); i++) {
                     String str = archivo.getRegistros().get(i);
+
                     StringTokenizer tok = new StringTokenizer(str, "|", true);
-                    Object[] rowData = null;
-                    model.addRow(rowData);
-                    for (int j = 0; j < model.getColumnCount(); j++) {
-                        if (tok.hasMoreTokens()) {
-                            model.setValueAt(tok.nextToken(), i, j);
+                    
+
+                    String firstTok = tok.nextToken();
+                    if (firstTok.charAt(0) != '*') {
+                        Object[] rowData = null;
+                        model.addRow(rowData);
+                        System.out.println("no esta eliminado");
+                        for (int j = 0; j < model.getColumnCount(); j++) {
+                            if (tok.hasMoreTokens()) {
+                                //String si = tok.nextToken();
+                                //System.out.println("no: " + firstTok);
+                                if(j==0){
+                                    model.setValueAt(firstTok, i, j);
+                                }else{
+                                    model.setValueAt(tok.nextToken(), i, j);
+                                }
+                                //model.setValueAt(j == 0? firstTok, i, j : tok.nextToken(),i,j);
+                                //model.setValueAt(firstTok, i, j);
+                            }
+                            if (tok.hasMoreTokens()) {
+                                tok.nextToken();
+                            }
                         }
-                        if (tok.hasMoreTokens()) {
-                            tok.nextToken();
-                        }
+                    }else{
+                        System.out.println("eliminado");
+                        //model.removeRow(i);
+                        
+                        
+                        //System.out.println("si esta eliminado");
+                        
+                        /*
+                        for (int j = 0; j < model.getColumnCount(); j++) {
+                            if (tok.hasMoreTokens()) {
+                                String si= tok.nextToken();
+                                //System.out.println("si: " + si);
+                                //model.setValueAt(tok.nextToken(), i, j);
+                            }
+                            if (tok.hasMoreTokens()) {
+                                tok.nextToken();
+                            }
+                        }*/
                     }
+
                 }
             }
             jt_info.setModel(model);
@@ -1290,7 +1324,13 @@ public class GUI extends javax.swing.JFrame {
     private void bt_removeregActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_removeregActionPerformed
         // TODO add your handling code here:
         int row = jt_info.getSelectedRow();
-        archivo.getRegistros().remove(row);
+        System.out.println("Row: " + row);
+        //archivo.getRegistros().remove(row);
+        try {
+            archivo.delete(row);
+        } catch (IOException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
         model.removeRow(row);
     }//GEN-LAST:event_bt_removeregActionPerformed
 
