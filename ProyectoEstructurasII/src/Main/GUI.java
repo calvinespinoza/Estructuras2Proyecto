@@ -1139,22 +1139,21 @@ public class GUI extends javax.swing.JFrame {
                     String str = archivo.getRegistros().get(i);
 
                     StringTokenizer tok = new StringTokenizer(str, "|", true);
-                    
+                    String firstTok = tok.nextToken();
 
                     Object[] rowData = null;
                     model.addRow(rowData);
-                    
-                    String firstTok = tok.nextToken();
+
                     if (firstTok.charAt(0) != '*') {
-                        
+
                         System.out.println("no esta eliminado");
                         for (int j = 0; j < model.getColumnCount(); j++) {
                             if (tok.hasMoreTokens()) {
                                 //String si = tok.nextToken();
                                 //System.out.println("no: " + firstTok);
-                                if(j==0){
+                                if (j == 0) {
                                     model.setValueAt(firstTok, i, j);
-                                }else{
+                                } else {
                                     model.setValueAt(tok.nextToken(), i, j);
                                 }
                                 //model.setValueAt(j == 0? firstTok, i, j : tok.nextToken(),i,j);
@@ -1164,13 +1163,12 @@ public class GUI extends javax.swing.JFrame {
                                 tok.nextToken();
                             }
                         }
-                    }else{
+                    } else {
                         System.out.println("eliminado");
+                        //i++;
                         //model.removeRow(i);
-                        
-                        
+
                         //System.out.println("si esta eliminado");
-                        
                         /*
                         for (int j = 0; j < model.getColumnCount(); j++) {
                             if (tok.hasMoreTokens()) {
@@ -1361,8 +1359,10 @@ public class GUI extends javax.swing.JFrame {
 
     private void bt_addregistryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_addregistryActionPerformed
         // TODO add your handling code here:
-        Object[] rowData = null;
-        model.addRow(rowData);
+        if (model.getValueAt(model.getRowCount()-1, 0) != "") {
+            Object[] rowData = null;
+            model.addRow(rowData);
+        } 
     }//GEN-LAST:event_bt_addregistryActionPerformed
 
     private void rb_intActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_intActionPerformed
