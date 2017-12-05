@@ -1141,10 +1141,12 @@ public class GUI extends javax.swing.JFrame {
                     StringTokenizer tok = new StringTokenizer(str, "|", true);
                     
 
+                    Object[] rowData = null;
+                    model.addRow(rowData);
+                    
                     String firstTok = tok.nextToken();
                     if (firstTok.charAt(0) != '*') {
-                        Object[] rowData = null;
-                        model.addRow(rowData);
+                        
                         System.out.println("no esta eliminado");
                         for (int j = 0; j < model.getColumnCount(); j++) {
                             if (tok.hasMoreTokens()) {
