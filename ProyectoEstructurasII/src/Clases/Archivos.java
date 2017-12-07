@@ -22,6 +22,8 @@ public class Archivos {
     ArrayList<Campos> campos = new ArrayList();
     ArrayList<String> registros = new ArrayList();
     ArrayList<Integer> llaves = new ArrayList();
+    
+    BTreeWeb tree = new BTreeWeb();
 
     public Archivos() {
     }
@@ -244,8 +246,10 @@ public class Archivos {
         writer.close();
     }
     
-    public void readKeys()
+    public void llenarTree()
     {
 
     }
+    
+    
 }

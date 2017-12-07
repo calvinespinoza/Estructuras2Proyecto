@@ -1139,7 +1139,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void bt_fileeditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_fileeditActionPerformed
         // TODO add your handling code here:
-
+        model = new DefaultTableModel();
         if (archivo != null) {
             jd_fileopen.pack();
             jd_fileopen.setLocationRelativeTo(null);
@@ -1379,9 +1379,7 @@ public class GUI extends javax.swing.JFrame {
         for (int i = lastRow; i < model.getRowCount(); i++) {
             sb = new StringBuilder();
             for (int j = 0; j < model.getColumnCount(); j++) {
-                System.out.println((String) model.getValueAt(i, j));
                 if (j == model.getColumnCount() - 1) {
-                    System.out.println("hola");
                     sb.append((String) model.getValueAt(i, j));
                 } else {
                     sb.append((String) model.getValueAt(i, j)).append("|");
