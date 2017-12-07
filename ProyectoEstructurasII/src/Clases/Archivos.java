@@ -63,7 +63,7 @@ public class Archivos {
     }
 
     public void save() throws IOException {
-        String path = "./Archivos/" + name + ".txt";
+        String path = "./Archivos/" + name;
         File f = new File(path);
         BufferedWriter writer = new BufferedWriter(new FileWriter(f));
         if (!campos.isEmpty()) {
@@ -85,6 +85,47 @@ public class Archivos {
 
         }
         writer.close();
+    }
+    
+    public void delete(int reg) throws IOException{
+        String path = "./Archivos/" + name;
+        File f = new File(path);
+        BufferedWriter writer = new BufferedWriter(new FileWriter(f));
+        
+        
+        if (!campos.isEmpty()) {
+            for (int i = 0; i < campos.size(); i++) {
+                Campos c = campos.get(i);
+                writer.append(c.toString() + ", ");
+            }
+
+        }
+        try {
+            if (!registros.isEmpty()) {
+                writer.append("\n");
+                for (int i = 0; i < registros.size(); i++) {
+                    writer.append(i == reg ? "*" + registros.get(i) + "\n" : registros.get(i) + "\n" );
+                }
+
+            }
+        } catch (Exception NullException) {
+
+        }
+        writer.close();
+        
+        String avail = "./Archivos/" + name.replaceFirst("[.][^.]+$", "")+ ".avail";
+        
+        File f2 = new File(avail);
+        BufferedWriter bw = new BufferedWriter(new FileWriter(f2));
+        
+        
+        
+        bw.append(reg + "," + registros.get(reg).length() +";");
+        
+        bw.close();
+        
+        
+        
     }
 
     public void save2() throws IOException {

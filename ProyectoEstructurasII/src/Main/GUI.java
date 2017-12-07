@@ -7,8 +7,6 @@ package Main;
 
 import Clases.Archivos;
 import Clases.Campos;
-import java.awt.Graphics;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -24,7 +22,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -1025,8 +1022,9 @@ public class GUI extends javax.swing.JFrame {
         boolean key;
         String type = bg_type.getSelection().getActionCommand();
 
-        if (chb_key.isSelected()) {
+        if (chb_key.isSelected() && !hasKey) {
             key = true;
+            hasKey = true;
         } else {
             key = false;
         }
@@ -1133,6 +1131,8 @@ public class GUI extends javax.swing.JFrame {
         }
         filename = file.getName();
         archivo = file;
+        System.out.println(archivo.getName());
+        model = new DefaultTableModel();
         jl_openfile.setText(filename.substring(0, filename.length() - 4));
     }//GEN-LAST:event_jButton9ActionPerformed
 
@@ -1154,20 +1154,53 @@ public class GUI extends javax.swing.JFrame {
 
                 for (int i = 0; i < archivo.getRegistros().size(); i++) {
                     String str = archivo.getRegistros().get(i);
+
                     StringTokenizer tok = new StringTokenizer(str, "|", true);
+                    String firstTok = tok.nextToken();
+
                     Object[] rowData = null;
                     model.addRow(rowData);
-                    for (int j = 0; j < model.getColumnCount(); j++) {
-                        if (tok.hasMoreTokens()) {
-                            model.setValueAt(tok.nextToken(), i, j);
+
+                    if (firstTok.charAt(0) != '*') {
+                        System.out.println("no esta eliminado");
+                        for (int j = 0; j < model.getColumnCount(); j++) {
+                            if (tok.hasMoreTokens()) {
+                                //String si = tok.nextToken();
+                                //System.out.println("no: " + firstTok);
+                                if (j == 0) {
+                                    model.setValueAt(firstTok, i, j);
+                                } else {
+                                    model.setValueAt(tok.nextToken(), i, j);
+                                }
+                                //model.setValueAt(j == 0? firstTok, i, j : tok.nextToken(),i,j);
+                                //model.setValueAt(firstTok, i, j);
+                            }
+                            if (tok.hasMoreTokens()) {
+                                tok.nextToken();
+                            }
                         }
-                        if (tok.hasMoreTokens()) {
-                            tok.nextToken();
-                        }
+                    } else {
+                        System.out.println("eliminado");
+                        //i++;
+                        //model.removeRow(i);
+
+                        //System.out.println("si esta eliminado");
+                        /*
+                        for (int j = 0; j < model.getColumnCount(); j++) {
+                            if (tok.hasMoreTokens()) {
+                                String si= tok.nextToken();
+                                //System.out.println("si: " + si);
+                                //model.setValueAt(tok.nextToken(), i, j);
+                            }
+                            if (tok.hasMoreTokens()) {
+                                tok.nextToken();
+                            }
+                        }*/
                     }
+
                 }
-                jt_info.setModel(model);
             }
+            jt_info.setModel(model);
         } else {
             JOptionPane.showMessageDialog(null, "Please open a file");
         }
@@ -1190,7 +1223,7 @@ public class GUI extends javax.swing.JFrame {
             }
             jd_editCampos.setVisible(true);
             jd_addCampos.setVisible(false);
-            if (tempCamp != null) {
+            if (tempCamp != null ) {
                 tf_camposNameEdit.setText(tempCamp.getName());
                 if (tempCamp.getType() == "int") {
                     rb_intEdit.setSelected(true);
@@ -1240,34 +1273,41 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_createFileActionPerformed
 
     private void jb_completeFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_completeFileActionPerformed
-        cb_campos.setVisible(false);
-        bt_addCampos.setVisible(false);
-        bt_removeCampos.setVisible(false);
-        bt_edit.setVisible(false);
-        jl_fileName.setText("FILE NAME");
-        jl_fileName.setVisible(true);
-        bt_createFile.setVisible(true);
-        tf_name.setVisible(true);
 
-        jd_addFile.dispose();
         try {
-            archivo.save();
-            archivo.saveXML();
+            if (hasKey) {
+                cb_campos.setVisible(false);
+                bt_addCampos.setVisible(false);
+                bt_removeCampos.setVisible(false);
+                bt_edit.setVisible(false);
+                jl_fileName.setText("FILE NAME");
+                jl_fileName.setVisible(true);
+                bt_createFile.setVisible(true);
+                tf_name.setVisible(true);
+                jd_addFile.dispose();
+                archivo.save();
+                archivo.saveXML();
+                this.setVisible(true);
+
+            } else {
+                JOptionPane.showMessageDialog(jd_fileopen, "No key has been selected");
+            }
+
         } catch (IOException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.setVisible(true);
+
     }//GEN-LAST:event_jb_completeFileActionPerformed
 
     private void bt_removeCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_removeCamposActionPerformed
-        int index =cb_campos.getSelectedIndex();
+        int index = cb_campos.getSelectedIndex();
         archivo.getCampos().remove(index);
         DefaultComboBoxModel<Campos> model = new DefaultComboBoxModel();
         for (int i = 0; i < archivo.getCampos().size(); i++) {
             model.addElement(archivo.getCampos().get(i));
         }
         cb_campos = new JComboBox(model);
-       
+
     }//GEN-LAST:event_bt_removeCamposActionPerformed
 
     private void bt_addCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_addCamposActionPerformed
@@ -1300,7 +1340,13 @@ public class GUI extends javax.swing.JFrame {
     private void bt_removeregActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_removeregActionPerformed
         // TODO add your handling code here:
         int row = jt_info.getSelectedRow();
-        archivo.getRegistros().remove(row);
+        System.out.println("Row: " + row);
+        //archivo.getRegistros().remove(row);
+        try {
+            archivo.delete(row);
+        } catch (IOException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
         model.removeRow(row);
     }//GEN-LAST:event_bt_removeregActionPerformed
 
@@ -1321,7 +1367,7 @@ public class GUI extends javax.swing.JFrame {
         }
         try {
             archivo.save();
-           
+
         } catch (IOException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1329,8 +1375,10 @@ public class GUI extends javax.swing.JFrame {
 
     private void bt_addregistryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_addregistryActionPerformed
         // TODO add your handling code here:
-        Object[] rowData = null;
-        model.addRow(rowData);
+        if (model.getValueAt(model.getRowCount() - 1, 0) != null) {
+            Object[] rowData = null;
+            model.addRow(rowData);
+        }
     }//GEN-LAST:event_bt_addregistryActionPerformed
 
     private void rb_intActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_intActionPerformed
@@ -1486,6 +1534,7 @@ public class GUI extends javax.swing.JFrame {
     String filename;
     Campos tempCamp;
     DefaultTableModel model = new DefaultTableModel();
+    boolean hasKey;
 
     public void exit() {
         int p = JOptionPane.showConfirmDialog(this, "Are you sure you want to quit");

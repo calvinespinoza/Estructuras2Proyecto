@@ -1,1 +1,0 @@
-Kullo: int[12], Kullo2: int[23232], Kullo3: double[43], 

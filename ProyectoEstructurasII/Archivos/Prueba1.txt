@@ -1,0 +1,1 @@
+Nombre: char[23], Identidad: int[32], 
