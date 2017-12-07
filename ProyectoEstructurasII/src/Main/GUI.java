@@ -1145,7 +1145,6 @@ public class GUI extends javax.swing.JFrame {
                     model.addRow(rowData);
 
                     if (firstTok.charAt(0) != '*') {
-
                         System.out.println("no esta eliminado");
                         for (int j = 0; j < model.getColumnCount(); j++) {
                             if (tok.hasMoreTokens()) {
@@ -1207,7 +1206,7 @@ public class GUI extends javax.swing.JFrame {
             }
             jd_editCampos.setVisible(true);
             jd_addCampos.setVisible(false);
-            if (tempCamp != null) {
+            if (tempCamp != null ) {
                 tf_camposNameEdit.setText(tempCamp.getName());
                 if (tempCamp.getType() == "int") {
                     rb_intEdit.setSelected(true);
@@ -1359,10 +1358,10 @@ public class GUI extends javax.swing.JFrame {
 
     private void bt_addregistryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_addregistryActionPerformed
         // TODO add your handling code here:
-        if (model.getValueAt(model.getRowCount()-1, 0) != "") {
+        if (model.getValueAt(model.getRowCount() - 1, 0) != null) {
             Object[] rowData = null;
             model.addRow(rowData);
-        } 
+        }
     }//GEN-LAST:event_bt_addregistryActionPerformed
 
     private void rb_intActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_intActionPerformed
