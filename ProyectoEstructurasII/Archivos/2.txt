@@ -1,0 +1,1 @@
+Kullo: int[2], cd /mnt/c/Users/Maslz/OneDrive/Documents/UNITEC/Estructura\ de\ Datos\ II : double[3232], 

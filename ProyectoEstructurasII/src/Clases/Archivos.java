@@ -162,17 +162,16 @@ public class Archivos {
             for (int i = 0; i < campos.size(); i++) {
                 if (campos.get(i).isKey() == true) {
                     saving += "\t<Key>\n";
-                }else{
+                } else {
                     saving += "\t<NoKey>\n";
                 }
                 saving += "\t\t<" + campos.get(i).getType() + " [" + campos.get(i).getLength() + "]> \n";
-                for (int j = 0; j < registros.size(); j++) {
-                    saving += "\t\t\t<" + campos.get(i).getName() + ">" + registros.get(i) + "</" + campos.get(i).getName() + ">\n";
-                }
+                saving += "\t\t\t<" + campos.get(i).getName() + ">" + /*registros.get(i)*/ "Text here" + "</" + campos.get(i).getName() + ">\n";
+               
                 saving += "\t\t</" + campos.get(i).getType() + ">\n";
                 if (campos.get(i).isKey() == true) {
                     saving += "\t</Key>\n";
-                }else{
+                } else {
                     saving += "\t</NoKey>\n";
                 }
                 //saving = "";
