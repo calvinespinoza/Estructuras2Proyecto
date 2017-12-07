@@ -21,6 +21,7 @@ public class Archivos {
     String name;
     ArrayList<Campos> campos = new ArrayList();
     ArrayList<String> registros = new ArrayList();
+    ArrayList<Integer> llaves = new ArrayList();
 
     public Archivos() {
     }
@@ -62,8 +63,21 @@ public class Archivos {
         this.registros.add(r);
     }
 
+    public ArrayList<Integer> getLlaves() {
+        return llaves;
+    }
+
+    public void setLlaves(ArrayList<Integer> llaves) {
+        this.llaves = llaves;
+    }
+    
+    public void addLlave(int ll)
+    {
+        this.llaves.add(ll);
+    }
+
     public void save() throws IOException {
-        String path = "./Archivos/" + name;
+        String path = "./Archivos/" + name + ".txt";
         File f = new File(path);
         BufferedWriter writer = new BufferedWriter(new FileWriter(f));
         if (!campos.isEmpty()) {
@@ -161,6 +175,7 @@ public class Archivos {
         while (token.hasMoreTokens()) {
             StringTokenizer token2 = new StringTokenizer(token.nextToken(), ":[]", true);
             String fieldname = token2.nextToken();
+            boolean key = false;
             if (token2.hasMoreTokens()) {
                 //System.out.println(fieldname);
                 token2.nextToken();
@@ -170,7 +185,11 @@ public class Archivos {
                 int length = Integer.parseInt(token2.nextToken());
                 //System.out.println(length);
                 token2.nextToken();
-                archivo.addCampo(new Campos(fieldname, fieldtype, length, false));
+                if(token2.nextToken().equals("k"))
+                {
+                    key = true;
+                }
+                archivo.addCampo(new Campos(fieldname, fieldtype, length, key));
                 token.nextToken();
 
             }
@@ -223,5 +242,10 @@ public class Archivos {
         }
 
         writer.close();
+    }
+    
+    public void readKeys()
+    {
+
     }
 }

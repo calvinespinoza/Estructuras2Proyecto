@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE XML>
+
+	<Key>
+		<int [23]> 
+			<Cuarto>Text here</Cuarto>
+		</int>
+	</Key>
+	<NoKey>
+		<double [23]> 
+			<DVD Room>Text here</DVD Room>
+		</double>
+	</NoKey>
+	<NoKey>
+		<char [12]> 
+			<CD Rooth>Text here</CD Rooth>
+		</char>
+	</NoKey>

@@ -59,8 +59,18 @@ public class Campos {
     
     @Override
     public String toString(){
-        return name + ": " + type + "[" + length + "]";
+        String llave = "n";
+        if (key)
+        {
+            llave = "k";
+        }
+        return name + ": " + type + "[" + length + "]" + ":" + llave;
     }
+    
+//        @Override
+//    public String toString(){
+//        return name + ": " + type + "[" + length + "]";
+//    }
     
     
 }

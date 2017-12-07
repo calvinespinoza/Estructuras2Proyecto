@@ -1133,11 +1133,13 @@ public class GUI extends javax.swing.JFrame {
         archivo = file;
         System.out.println(archivo.getName());
         model = new DefaultTableModel();
+        archivo.setName(filename.substring(0, filename.length() - 4));
         jl_openfile.setText(filename.substring(0, filename.length() - 4));
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void bt_fileeditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_fileeditActionPerformed
         // TODO add your handling code here:
+
         if (archivo != null) {
             jd_fileopen.pack();
             jd_fileopen.setLocationRelativeTo(null);
@@ -1145,8 +1147,13 @@ public class GUI extends javax.swing.JFrame {
             jd_fileopen.setVisible(true);
             this.setVisible(false);
 
+            int keyColumn = 0;
+
             for (int i = 0; i < archivo.getCampos().size(); i++) {
                 String str = archivo.getCampos().get(i).getName();
+                if (archivo.getCampos().get(i).isKey()) {
+                    keyColumn = i;
+                }
                 model.addColumn(str);
             }
 
@@ -1164,13 +1171,23 @@ public class GUI extends javax.swing.JFrame {
                     if (firstTok.charAt(0) != '*') {
                         System.out.println("no esta eliminado");
                         for (int j = 0; j < model.getColumnCount(); j++) {
+                            if (j == keyColumn) {
+
+                            }
                             if (tok.hasMoreTokens()) {
                                 //String si = tok.nextToken();
                                 //System.out.println("no: " + firstTok);
                                 if (j == 0) {
+                                    if (j == keyColumn) {
+                                        archivo.addLlave(Integer.parseInt(firstTok));
+                                    }
                                     model.setValueAt(firstTok, i, j);
                                 } else {
-                                    model.setValueAt(tok.nextToken(), i, j);
+                                    String tok3 = tok.nextToken();
+                                    if (j == keyColumn) {
+                                        archivo.addLlave(Integer.parseInt(tok3));
+                                    }
+                                    model.setValueAt(tok3, i, j);
                                 }
                                 //model.setValueAt(j == 0? firstTok, i, j : tok.nextToken(),i,j);
                                 //model.setValueAt(firstTok, i, j);
@@ -1199,8 +1216,11 @@ public class GUI extends javax.swing.JFrame {
                     }
 
                 }
+
             }
             jt_info.setModel(model);
+            lastRow = model.getRowCount();
+            System.out.println(archivo.getLlaves());
         } else {
             JOptionPane.showMessageDialog(null, "Please open a file");
         }
@@ -1223,7 +1243,7 @@ public class GUI extends javax.swing.JFrame {
             }
             jd_editCampos.setVisible(true);
             jd_addCampos.setVisible(false);
-            if (tempCamp != null ) {
+            if (tempCamp != null) {
                 tf_camposNameEdit.setText(tempCamp.getName());
                 if (tempCamp.getType() == "int") {
                     rb_intEdit.setSelected(true);
@@ -1352,11 +1372,16 @@ public class GUI extends javax.swing.JFrame {
 
     private void bt_saveregActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_saveregActionPerformed
         // TODO add your handling code here:
+        if (jt_info.getCellEditor() != null) {
+            jt_info.getCellEditor().stopCellEditing();
+        }
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < model.getRowCount(); i++) {
+        for (int i = lastRow; i < model.getRowCount(); i++) {
             sb = new StringBuilder();
             for (int j = 0; j < model.getColumnCount(); j++) {
-                if (j == model.getColumnCount()) {
+                System.out.println((String) model.getValueAt(i, j));
+                if (j == model.getColumnCount() - 1) {
+                    System.out.println("hola");
                     sb.append((String) model.getValueAt(i, j));
                 } else {
                     sb.append((String) model.getValueAt(i, j)).append("|");
@@ -1365,6 +1390,7 @@ public class GUI extends javax.swing.JFrame {
             archivo.addRegistro(sb.toString());
 
         }
+        lastRow = model.getRowCount();
         try {
             archivo.save();
 
@@ -1375,7 +1401,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void bt_addregistryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_addregistryActionPerformed
         // TODO add your handling code here:
-        if (model.getValueAt(model.getRowCount() - 1, 0) != null) {
+        if (model.getRowCount() == 0 || model.getValueAt(model.getRowCount() - 1, 0) != null) {
             Object[] rowData = null;
             model.addRow(rowData);
         }
@@ -1535,6 +1561,7 @@ public class GUI extends javax.swing.JFrame {
     Campos tempCamp;
     DefaultTableModel model = new DefaultTableModel();
     boolean hasKey;
+    int lastRow;
 
     public void exit() {
         int p = JOptionPane.showConfirmDialog(this, "Are you sure you want to quit");
@@ -1547,7 +1574,7 @@ public class GUI extends javax.swing.JFrame {
         JFileChooser fileChooser = new JFileChooser("./Archivos/");
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos .txt", "txt");
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos de texto", "txt");
         fileChooser.setFileFilter(filtro);
 
         int seleccion = fileChooser.showOpenDialog(this);
