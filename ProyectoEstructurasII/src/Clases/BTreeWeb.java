@@ -1,6 +1,5 @@
 package Clases;
 
-import Testing.*;
 import java.util.Scanner;
 
 
