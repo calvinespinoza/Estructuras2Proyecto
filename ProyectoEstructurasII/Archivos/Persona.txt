@@ -1,5 +1,0 @@
-Nombre: char[12],          Apellido: char[12],          edad: int[3],          ID: int[10], 
-Andre|Velasquez|20|12345|
-Maria|Pineda|21|13243|
-*Mario|Gutierrez|22|14342|
-Gina|Alvarenga|23|null|

@@ -1396,6 +1396,8 @@ public class GUI extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
+        System.out.println("arbol imprimiendo");
+        archivo.llenarTree();
     }//GEN-LAST:event_bt_saveregActionPerformed
 
     private void bt_addregistryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_addregistryActionPerformed

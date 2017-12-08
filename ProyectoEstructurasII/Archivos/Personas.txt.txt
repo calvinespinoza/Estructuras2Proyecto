@@ -1,2 +1,0 @@
-Nombre: char[10],  Apellido: char[20],  ID: int[13], 
-null|Andre|Velasquez|null|

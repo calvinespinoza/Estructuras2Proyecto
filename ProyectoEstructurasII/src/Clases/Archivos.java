@@ -485,8 +485,12 @@ public class Archivos {
     
     public void llenarTree()
     {
-
+        tree = new BTreeWeb();
+        
+        for (int i = 0; i < this.llaves.size(); i++) {
+            tree.put(llaves.get(i), i);
+            System.out.println(tree.toString());
+        }
     }
-    
     
 }
