@@ -5,6 +5,7 @@
  */
 package Clases;
 
+import Main.GUI;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -15,6 +16,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Archivos {
 
@@ -102,7 +105,7 @@ public class Archivos {
         }
         writer.close();
     }
-    
+    /*
     public void delete(int reg) throws IOException{
         String path = "./Archivos/" + name;
         File f = new File(path);
@@ -143,6 +146,240 @@ public class Archivos {
         
         
     }
+    
+        public void agregarRegistro2(String registro){
+        String path = "./Archivos" + name;
+        String avail = "./Archivos/" + path.replaceFirst("[.][^.]+$", "") + ".avail";
+        
+        
+        File f2 = new File(avail);
+        
+        
+        
+    }
+    */
+   
+ 
+
+    public void agregarRegistro(String registro) throws IOException {//utilizando la avail list
+        String path = "./Archivos/" + name;
+        String avail = "./Archivos/" + path.replaceFirst("[.][^.]+$", "") + ".avail";
+        File f2 = new File(avail);
+        BufferedReader br = new BufferedReader(new FileReader(f2));
+        String pathReg = "./Archivos/" + name;
+
+        File f = new File(pathReg);
+        BufferedWriter writer = new BufferedWriter(new FileWriter(f, true));
+        try {
+            if (br.read() == -1) {//si avail list esta vacio, se agrega el registro al final del archivo
+
+                writer.append(registro);
+
+                writer.flush();
+
+            } else {//revisar el offset y tamano de los registros en el avail list
+                StringTokenizer st = new StringTokenizer(br.readLine(), ";", true);
+                boolean encontroEspacio = false;
+                int offset = 0;
+                int size;
+                while (st.hasMoreTokens()) {
+                    StringTokenizer st2 = new StringTokenizer(st.nextToken(), ",", true);
+                    offset = Integer.parseInt(st2.nextToken());
+                    size = Integer.parseInt(st2.nextToken());
+                    
+                    
+                    if(size >= registro.length()){
+                        encontroEspacio = true;
+                    }
+                    st.nextToken();
+                }
+                
+                
+                if(encontroEspacio){
+                    reemplazarEliminado(registro/*String del registro*/, offset/*posicion del registro eliminado en el archivo*/);
+                    //reemplazar el registro borrado por el registro que se va a agregar y actualizar avail list
+                }else{//si no encuentra espacio, el registro se agrega al final
+                    writer.append(registro);
+                }
+                /*System.out.println(st.nextToken());
+                
+                System.out.println(st.nextToken());
+                */
+            }
+
+        } catch (IOException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            br.close();
+            writer.close();
+
+        }
+
+    }
+    
+    
+    public void reemplazarEliminado(String registro, int offset) throws IOException{
+        //recibe registro y posicion del registro eliminado y se reemplaza el eliminado por el nuevo registro 
+        
+        String reg = registros.get(offset);
+        
+        String pathReg = "./Archivos/" + name;
+        
+        File f = new File(pathReg);
+        BufferedWriter writer = new BufferedWriter(new FileWriter(f, true));
+        
+        int size = registros.get(offset).length();
+        
+        if(registro.length() == size){
+            //si lenght = size del
+             if (!campos.isEmpty()) {
+            for (int i = 0; i < campos.size(); i++) {
+                Campos c = campos.get(i);
+                writer.append(c.toString() + ", ");
+            }
+            
+             }
+             
+             
+             try {
+            if (!registros.isEmpty()) {
+                writer.append("\n");
+                registros.set(offset, registro);
+                
+                for (int i = 0; i < registros.size(); i++) {
+                    /*if(i == offset){
+                        writer.append(registro + "\n");
+                    }else{
+                        writer.append(registros.get(i) + "\n");
+                    }*/
+                    
+                    writer.append(i == offset ?
+                            registro + "\n" 
+                            :
+                            registros.get(i) + "\n");
+                    writer.append(registros.get(i) + "\n");
+                }
+
+            }
+        } catch (Exception NullException) {
+
+        }finally{   
+            
+        writer.close();
+
+        }
+             
+               
+            //si el length del nuevo registro es igual al length del registro a modificar, solo se reemplaza directamente
+        }
+        
+        //sino se tendria que actualizar en el avail list el espacio que queda disponible despues de reemplazar el registro
+        
+        else{
+            int espaciolibre = size - registro.length();
+            
+            if (!campos.isEmpty()) {
+            for (int i = 0; i < campos.size(); i++) {
+                Campos c = campos.get(i);
+                writer.append(c.toString() + ", ");
+            }
+            
+            try {
+            if (!registros.isEmpty()) {
+                writer.append("\n");
+                StringBuilder sb = new StringBuilder();
+                
+                
+                for (int i = 0; i < espaciolibre; i++) {
+                    sb.append("^");
+                }
+                
+                for (int i = 0; i < registros.size(); i++) {
+                    /*if(i == offset){
+                        writer.append(registros.get(i) +  sb.toString() + "\n");
+                    }else{
+                        writer.append(registros.get(i) + "\n");
+                    }*/
+                    writer.append(i == offset ?  
+                            registros.get(i) + sb.toString() + "\n" 
+                            :
+                            registros.get(i) + "\n");
+                }
+
+            }
+        } catch (Exception NullException) {
+
+        }finally{   
+            
+        writer.close();
+        
+        }
+            
+                
+        }
+                  
+        registros.set(offset, registro);
+        String path = "./Archivos/" + name;
+        String avail = "./Archivos/" + path.replaceFirst("[.][^.]+$", "") + ".avail";
+        File f2 = new File(avail);
+        BufferedWriter bw = new BufferedWriter(new FileWriter(f2));
+        
+        
+            try {
+                bw.append((offset + 1) + ","  + espaciolibre + ";");
+                bw.flush();
+                bw.close();
+            } catch (Exception e) {
+            } 
+        
+        
+        }
+
+             
+        }
+    
+    
+    public void delete(int reg) throws IOException {
+        String path = "./Archivos/" + name;
+        File f = new File(path);
+        BufferedWriter writer = new BufferedWriter(new FileWriter(f));
+
+        if (!campos.isEmpty()) {
+            for (int i = 0; i < campos.size(); i++) {
+                Campos c = campos.get(i);
+                writer.append(c.toString() + ", ");
+            }
+
+        }
+        try {
+            if (!registros.isEmpty()) {
+                writer.append("\n");
+                for (int i = 0; i < registros.size(); i++) {
+                    writer.append(i == reg ? "*" + registros.get(i) + "\n" : registros.get(i) + "\n");
+                }
+
+            }
+        } catch (Exception NullException) {
+
+        }
+        writer.close();
+
+        String avail = "./Archivos/" + name.replaceFirst("[.][^.]+$", "") + ".avail";
+
+        File f2 = new File(avail);
+        BufferedWriter bw = new BufferedWriter(new FileWriter(f2, true));
+
+        bw.append(reg + "," + registros.get(reg).length() + ";");
+
+        
+        bw.flush();
+        bw.close();
+
+    }
+
+    
+    
+
 
     public void save2() throws IOException {
         String path = "./Archivos/" + name + ".txt";
