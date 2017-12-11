@@ -1168,7 +1168,7 @@ public class GUI extends javax.swing.JFrame {
                 for (int i = 0; i < archivo.getRegistros().size(); i++) {
                     String str = archivo.getRegistros().get(i);
 
-                    StringTokenizer tok = new StringTokenizer(str, "|", true);
+                    StringTokenizer tok = new StringTokenizer(str, "|", false);
                     String firstTok = tok.nextToken();
 
                     Object[] rowData = null;
@@ -1198,9 +1198,10 @@ public class GUI extends javax.swing.JFrame {
                                 //model.setValueAt(j == 0? firstTok, i, j : tok.nextToken(),i,j);
                                 //model.setValueAt(firstTok, i, j);
                             }
+                            /*
                             if (tok.hasMoreTokens()) {
                                 tok.nextToken();
-                            }
+                            }*/
                         }
                     } else {
                         System.out.println("eliminado");
