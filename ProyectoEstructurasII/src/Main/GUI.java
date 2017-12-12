@@ -1163,6 +1163,7 @@ public class GUI extends javax.swing.JFrame {
                 model.addColumn(str);
             }
 
+            int k = 0;
             if (!archivo.getRegistros().isEmpty()) {
 
                 for (int i = 0; i < archivo.getRegistros().size(); i++) {
@@ -1171,15 +1172,11 @@ public class GUI extends javax.swing.JFrame {
                     StringTokenizer tok = new StringTokenizer(str, "|", false);
                     String firstTok = tok.nextToken();
 
-                    Object[] rowData = null;
-                    model.addRow(rowData);
-
                     if (firstTok.charAt(0) != '*') {
                         System.out.println("no esta eliminado");
+                        Object[] rowData = null;
+                        model.addRow(rowData);
                         for (int j = 0; j < model.getColumnCount(); j++) {
-                            if (j == keyColumn) {
-
-                            }
                             if (tok.hasMoreTokens()) {
                                 //String si = tok.nextToken();
                                 //System.out.println("no: " + firstTok);
@@ -1187,13 +1184,13 @@ public class GUI extends javax.swing.JFrame {
                                     if (j == keyColumn) {
                                         archivo.addLlave(Integer.parseInt(firstTok));
                                     }
-                                    model.setValueAt(firstTok, i, j);
+                                    model.setValueAt(firstTok, i-k, j);
                                 } else {
                                     String tok3 = tok.nextToken();
                                     if (j == keyColumn) {
                                         archivo.addLlave(Integer.parseInt(tok3));
                                     }
-                                    model.setValueAt(tok3, i, j);
+                                    model.setValueAt(tok3, i-k, j);
                                 }
                                 //model.setValueAt(j == 0? firstTok, i, j : tok.nextToken(),i,j);
                                 //model.setValueAt(firstTok, i, j);
@@ -1205,6 +1202,7 @@ public class GUI extends javax.swing.JFrame {
                         }
                     } else {
                         System.out.println("eliminado");
+                        k++;
                         //i++;
                         //model.removeRow(i);
 
@@ -1220,17 +1218,17 @@ public class GUI extends javax.swing.JFrame {
                                 tok.nextToken();
                             }
                         }*/
+                        }
+
                     }
 
                 }
-
+                jt_info.setModel(model);
+                lastRow = model.getRowCount();
+                System.out.println(archivo.getLlaves());
+            } else {
+                JOptionPane.showMessageDialog(null, "Please open a file");
             }
-            jt_info.setModel(model);
-            lastRow = model.getRowCount();
-            System.out.println(archivo.getLlaves());
-        } else {
-            JOptionPane.showMessageDialog(null, "Please open a file");
-        }
 
     }//GEN-LAST:event_bt_fileeditActionPerformed
 
@@ -1447,7 +1445,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_rb_charActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-if (archivo != null) {
+        if (archivo != null) {
             XML xml = new XML();
             xml.setFileName(archivo.getName());
             xml.setCampos(archivo.getCampos());
