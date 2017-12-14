@@ -8,7 +8,7 @@ Cuarto: int[23]:k,                DVD Room: double[23]:n,                CD Root
 18|43|Anus
 2|55|Rooth
 7|86|Awaken
-9|43|Awaked*
+*9|43|Awaked*
 98|43|Despertado
 43|50|Flappy
 78|23|Butterfly
