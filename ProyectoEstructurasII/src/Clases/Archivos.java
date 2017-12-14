@@ -25,7 +25,7 @@ public class Archivos {
     ArrayList<Campos> campos = new ArrayList();
     ArrayList<String> registros = new ArrayList();
     ArrayList<Integer> llaves = new ArrayList();
-    
+
     BTreeWeb tree = new BTreeWeb();
 
     public Archivos() {
@@ -75,10 +75,17 @@ public class Archivos {
     public void setLlaves(ArrayList<Integer> llaves) {
         this.llaves = llaves;
     }
-    
-    public void addLlave(int ll)
-    {
+
+    public void addLlave(int ll) {
         this.llaves.add(ll);
+    }
+
+    public BTreeWeb getTree() {
+        return tree;
+    }
+
+    public void setTree(BTreeWeb tree) {
+        this.tree = tree;
     }
 
     public void save() throws IOException {
@@ -105,6 +112,7 @@ public class Archivos {
         }
         writer.close();
     }
+
     /*
     public void delete(int reg) throws IOException{
         String path = "./Archivos/" + name;
@@ -157,9 +165,7 @@ public class Archivos {
         
         
     }
-    */
-   
- 
+     */
 
     public void agregarRegistro(String registro) throws IOException {//utilizando la avail list
         String path = "./Archivos/" + name;
@@ -186,25 +192,23 @@ public class Archivos {
                     StringTokenizer st2 = new StringTokenizer(st.nextToken(), ",", true);
                     offset = Integer.parseInt(st2.nextToken());
                     size = Integer.parseInt(st2.nextToken());
-                    
-                    
-                    if(size >= registro.length()){
+
+                    if (size >= registro.length()) {
                         encontroEspacio = true;
                     }
                     st.nextToken();
                 }
-                
-                
-                if(encontroEspacio){
+
+                if (encontroEspacio) {
                     reemplazarEliminado(registro/*String del registro*/, offset/*posicion del registro eliminado en el archivo*/);
                     //reemplazar el registro borrado por el registro que se va a agregar y actualizar avail list
-                }else{//si no encuentra espacio, el registro se agrega al final
+                } else {//si no encuentra espacio, el registro se agrega al final
                     writer.append(registro);
                 }
                 /*System.out.println(st.nextToken());
                 
                 System.out.println(st.nextToken());
-                */
+                 */
             }
 
         } catch (IOException ex) {
@@ -216,129 +220,115 @@ public class Archivos {
         }
 
     }
-    
-    
-    public void reemplazarEliminado(String registro, int offset) throws IOException{
+
+    public void reemplazarEliminado(String registro, int offset) throws IOException {
         //recibe registro y posicion del registro eliminado y se reemplaza el eliminado por el nuevo registro 
-        
+
         String reg = registros.get(offset);
-        
+
         String pathReg = "./Archivos/" + name;
-        
+
         File f = new File(pathReg);
         BufferedWriter writer = new BufferedWriter(new FileWriter(f, true));
-        
+
         int size = registros.get(offset).length();
-        
-        if(registro.length() == size){
+
+        if (registro.length() == size) {
             //si lenght = size del
-             if (!campos.isEmpty()) {
-            for (int i = 0; i < campos.size(); i++) {
-                Campos c = campos.get(i);
-                writer.append(c.toString() + ", ");
+            if (!campos.isEmpty()) {
+                for (int i = 0; i < campos.size(); i++) {
+                    Campos c = campos.get(i);
+                    writer.append(c.toString() + ", ");
+                }
+
             }
-            
-             }
-             
-             
-             try {
-            if (!registros.isEmpty()) {
-                writer.append("\n");
-                registros.set(offset, registro);
-                
-                for (int i = 0; i < registros.size(); i++) {
-                    /*if(i == offset){
+
+            try {
+                if (!registros.isEmpty()) {
+                    writer.append("\n");
+                    registros.set(offset, registro);
+
+                    for (int i = 0; i < registros.size(); i++) {
+                        /*if(i == offset){
                         writer.append(registro + "\n");
                     }else{
                         writer.append(registros.get(i) + "\n");
                     }*/
-                    
-                    writer.append(i == offset ?
-                            registro + "\n" 
-                            :
-                            registros.get(i) + "\n");
-                    writer.append(registros.get(i) + "\n");
+
+                        writer.append(i == offset
+                                ? registro + "\n"
+                                : registros.get(i) + "\n");
+                        writer.append(registros.get(i) + "\n");
+                    }
+
                 }
+            } catch (Exception NullException) {
+
+            } finally {
+
+                writer.close();
 
             }
-        } catch (Exception NullException) {
 
-        }finally{   
-            
-        writer.close();
-
-        }
-             
-               
             //si el length del nuevo registro es igual al length del registro a modificar, solo se reemplaza directamente
-        }
-        
-        //sino se tendria que actualizar en el avail list el espacio que queda disponible despues de reemplazar el registro
-        
-        else{
+        } //sino se tendria que actualizar en el avail list el espacio que queda disponible despues de reemplazar el registro
+        else {
             int espaciolibre = size - registro.length();
-            
+
             if (!campos.isEmpty()) {
-            for (int i = 0; i < campos.size(); i++) {
-                Campos c = campos.get(i);
-                writer.append(c.toString() + ", ");
-            }
-            
-            try {
-            if (!registros.isEmpty()) {
-                writer.append("\n");
-                StringBuilder sb = new StringBuilder();
-                
-                
-                for (int i = 0; i < espaciolibre; i++) {
-                    sb.append("^");
+                for (int i = 0; i < campos.size(); i++) {
+                    Campos c = campos.get(i);
+                    writer.append(c.toString() + ", ");
                 }
-                
-                for (int i = 0; i < registros.size(); i++) {
-                    /*if(i == offset){
+
+                try {
+                    if (!registros.isEmpty()) {
+                        writer.append("\n");
+                        StringBuilder sb = new StringBuilder();
+
+                        for (int i = 0; i < espaciolibre; i++) {
+                            sb.append("^");
+                        }
+
+                        for (int i = 0; i < registros.size(); i++) {
+                            /*if(i == offset){
                         writer.append(registros.get(i) +  sb.toString() + "\n");
                     }else{
                         writer.append(registros.get(i) + "\n");
                     }*/
-                    writer.append(i == offset ?  
-                            registros.get(i) + sb.toString() + "\n" 
-                            :
-                            registros.get(i) + "\n");
+                            writer.append(i == offset
+                                    ? registros.get(i) + sb.toString() + "\n"
+                                    : registros.get(i) + "\n");
+                        }
+
+                    }
+                } catch (Exception NullException) {
+
+                } finally {
+
+                    writer.close();
+
                 }
 
             }
-        } catch (Exception NullException) {
 
-        }finally{   
-            
-        writer.close();
-        
-        }
-            
-                
-        }
-                  
-        registros.set(offset, registro);
-        String path = "./Archivos/" + name;
-        String avail = "./Archivos/" + path.replaceFirst("[.][^.]+$", "") + ".avail";
-        File f2 = new File(avail);
-        BufferedWriter bw = new BufferedWriter(new FileWriter(f2));
-        
-        
+            registros.set(offset, registro);
+            String path = "./Archivos/" + name;
+            String avail = "./Archivos/" + path.replaceFirst("[.][^.]+$", "") + ".avail";
+            File f2 = new File(avail);
+            BufferedWriter bw = new BufferedWriter(new FileWriter(f2));
+
             try {
-                bw.append((offset + 1) + ","  + espaciolibre + ";");
+                bw.append((offset + 1) + "," + espaciolibre + ";");
                 bw.flush();
                 bw.close();
             } catch (Exception e) {
-            } 
-        
-        
+            }
+
         }
 
-             
-        }
-    
-    
+    }
+
     public void delete(int reg) throws IOException {
         String path = "./Archivos/" + name;
         File f = new File(path);
@@ -371,15 +361,10 @@ public class Archivos {
 
         bw.append(reg + "," + registros.get(reg).length() + ";");
 
-        
         bw.flush();
         bw.close();
 
     }
-
-    
-    
-
 
     public void save2() throws IOException {
         String path = "./Archivos/" + name + ".txt";
@@ -424,8 +409,7 @@ public class Archivos {
                 int length = Integer.parseInt(token2.nextToken());
                 //System.out.println(length);
                 token2.nextToken();
-                if(token2.nextToken().equals("k"))
-                {
+                if (token2.nextToken().equals("k")) {
                     key = true;
                 }
                 archivo.addCampo(new Campos(fieldname, fieldtype, length, key));
@@ -466,7 +450,7 @@ public class Archivos {
                 }
                 saving += "\t\t<" + campos.get(i).getType() + " [" + campos.get(i).getLength() + "]> \n";
                 saving += "\t\t\t<" + campos.get(i).getName() + ">" + /*registros.get(i)*/ "Text here" + "</" + campos.get(i).getName() + ">\n";
-               
+
                 saving += "\t\t</" + campos.get(i).getType() + ">\n";
                 if (campos.get(i).isKey() == true) {
                     saving += "\t</Key>\n";
@@ -482,15 +466,20 @@ public class Archivos {
 
         writer.close();
     }
-    
-    public void llenarTree()
-    {
+
+    public void llenarTree() {
         tree = new BTreeWeb();
-        
+
         for (int i = 0; i < this.llaves.size(); i++) {
             tree.put(llaves.get(i), i);
             System.out.println(tree.toString());
         }
     }
-    
+
+    public int buscarTree(String key) {
+        int val = (int) tree.get(Integer.parseInt(key));
+        
+        return val;
+    }
+
 }

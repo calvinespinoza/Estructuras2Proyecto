@@ -1,4 +1,4 @@
-Cuarto: int[23]:n,                       DVD Room: double[23]:n,                       CD Rooth: char[12]:n, 
+Cuarto: int[23]:n,                 DVD Room: double[23]:n,                 CD Rooth: char[12]:n, 
 23|34|Twitch
 34|45|Pija
 45|22|Mast
@@ -9,14 +9,13 @@ Cuarto: int[23]:n,                       DVD Room: double[23]:n,                
 2|55|Rooth
 7|86|Awaken
 *9|43|Awaked*
-98|43|Despertado
 *98|43|Despertado
 43|50|Flappy
 78|23|Butterfly
 85|34|Beerd
 90|12|Aleteo
 76|32|Mariposa
-54|98|Juego
+*54|98|Juego
 109|32|Alguien
 120|433|Chiquita
 633|53|Nombre
