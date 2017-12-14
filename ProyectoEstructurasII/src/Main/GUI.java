@@ -5,15 +5,19 @@
  */
 package Main;
 
-import Clases.XML;
+import Clases.XMLClass;
 import Clases.Archivos;
 import Clases.Campos;
 import java.awt.event.KeyEvent;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,6 +28,18 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import jxl.CellView;
+import jxl.Workbook;
+import jxl.WorkbookSettings;
+import jxl.format.UnderlineStyle;
+import jxl.write.Formula;
+import jxl.write.Label;
+import jxl.write.WritableCellFormat;
+import jxl.write.WritableFont;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
+import jxl.write.WriteException;
+import jxl.write.biff.RowsExceededException;
 
 /**
  *
@@ -126,11 +142,12 @@ public class GUI extends javax.swing.JFrame {
         tf_search = new javax.swing.JTextField();
         jButton13 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jt_search = new javax.swing.JTable();
         jPanel9 = new javax.swing.JPanel();
         jButton15 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
         bt_backtomain1 = new javax.swing.JButton();
+        jButton17 = new javax.swing.JButton();
         mainPanel = new javax.swing.JPanel();
         jb_addFile = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -878,13 +895,15 @@ public class GUI extends javax.swing.JFrame {
         jd_search.setUndecorated(true);
 
         jPanel8.setBackground(new java.awt.Color(0, 102, 153));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Gotham Bold", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("B U S Q U E D A");
+        jPanel8.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(228, 78, -1, -1));
 
         tf_search.setBackground(new java.awt.Color(255, 255, 255));
-        tf_search.setFont(new java.awt.Font("Gotham Medium", 0, 11)); // NOI18N
+        tf_search.setFont(new java.awt.Font("Gotham Medium", 0, 14)); // NOI18N
         tf_search.setForeground(new java.awt.Color(0, 0, 0));
         tf_search.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tf_search.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -892,6 +911,7 @@ public class GUI extends javax.swing.JFrame {
                 tf_searchKeyPressed(evt);
             }
         });
+        jPanel8.add(tf_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 142, 256, 30));
 
         jButton13.setBackground(new java.awt.Color(255, 255, 255));
         jButton13.setFont(new java.awt.Font("Gotham Medium", 0, 14)); // NOI18N
@@ -904,9 +924,10 @@ public class GUI extends javax.swing.JFrame {
                 jButton13ActionPerformed(evt);
             }
         });
+        jPanel8.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, -1, 30));
 
-        jTable1.setFont(new java.awt.Font("Gotham Medium", 0, 11)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jt_search.setFont(new java.awt.Font("Gotham Medium", 0, 11)); // NOI18N
+        jt_search.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -914,7 +935,9 @@ public class GUI extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(jt_search);
+
+        jPanel8.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 523, 210));
 
         jPanel9.setBackground(new java.awt.Color(0, 86, 138));
 
@@ -951,7 +974,7 @@ public class GUI extends javax.swing.JFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                 .addComponent(bt_backtomain1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 410, Short.MAX_VALUE)
                 .addComponent(jButton16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton15)
@@ -964,43 +987,15 @@ public class GUI extends javax.swing.JFrame {
             .addComponent(bt_backtomain1)
         );
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(277, 277, 277)
-                        .addComponent(jLabel5))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(176, 176, 176)
-                        .addComponent(tf_search, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jButton13)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65))
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addComponent(jLabel5)
-                .addGap(44, 44, 44)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(tf_search, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        jPanel8.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jButton17.setText("jButton17");
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
+        jPanel8.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 460, -1, -1));
 
         javax.swing.GroupLayout jd_searchLayout = new javax.swing.GroupLayout(jd_search.getContentPane());
         jd_search.getContentPane().setLayout(jd_searchLayout);
@@ -1322,6 +1317,8 @@ public class GUI extends javax.swing.JFrame {
                     keyColumn = i;
                 }
                 model.addColumn(str);
+                model2.addColumn(str);
+
             }
 
             int k = 0;
@@ -1335,12 +1332,15 @@ public class GUI extends javax.swing.JFrame {
 
                     if (firstTok.charAt(0) != '*') {
                         System.out.println("no esta eliminado");
+                        registrosAvailable.add(str);
                         Object[] rowData = null;
                         model.addRow(rowData);
                         for (int j = 0; j < model.getColumnCount(); j++) {
+                            if(archivo.getCampos().get(j).isKey())
+                            {
+                                keyColumn = j;
+                            }
                             if (tok.hasMoreTokens()) {
-                                //String si = tok.nextToken();
-                                //System.out.println("no: " + firstTok);
                                 if (j == 0) {
                                     if (j == keyColumn) {
                                         archivo.addLlave(Integer.parseInt(firstTok));
@@ -1353,32 +1353,11 @@ public class GUI extends javax.swing.JFrame {
                                     }
                                     model.setValueAt(tok3, i - k, j);
                                 }
-                                //model.setValueAt(j == 0? firstTok, i, j : tok.nextToken(),i,j);
-                                //model.setValueAt(firstTok, i, j);
                             }
-                            /*
-                            if (tok.hasMoreTokens()) {
-                                tok.nextToken();
-                            }*/
                         }
                     } else {
                         System.out.println("eliminado");
                         k++;
-                        //i++;
-                        //model.removeRow(i);
-
-                        //System.out.println("si esta eliminado");
-                        /*
-                        for (int j = 0; j < model.getColumnCount(); j++) {
-                            if (tok.hasMoreTokens()) {
-                                String si= tok.nextToken();
-                                //System.out.println("si: " + si);
-                                //model.setValueAt(tok.nextToken(), i, j);
-                            }
-                            if (tok.hasMoreTokens()) {
-                                tok.nextToken();
-                            }
-                        }*/
                     }
 
                 }
@@ -1562,7 +1541,7 @@ public class GUI extends javax.swing.JFrame {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("arbol imprimiendo");
-        archivo.llenarTree();
+        archivo.llenarTree(registrosAvailable);
     }//GEN-LAST:event_bt_saveregActionPerformed
 
     private void bt_addregistryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_addregistryActionPerformed
@@ -1636,6 +1615,8 @@ public class GUI extends javax.swing.JFrame {
         jd_search.pack();
         jd_search.setLocationRelativeTo(null);
         jd_search.setVisible(true);
+
+        jt_search.setModel(model2);
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
@@ -1645,7 +1626,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void bt_backtomain1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_backtomain1ActionPerformed
@@ -1655,14 +1636,28 @@ public class GUI extends javax.swing.JFrame {
         jd_fileopen.setVisible(true);
     }//GEN-LAST:event_bt_backtomain1ActionPerformed
 
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton17ActionPerformed
+
     private void searchKey() {
         System.out.println("verag");
         String key = tf_search.getText();
 
-        int value = archivo.buscarTree(key);
-        
-        System.out.println(value);
+        String value = archivo.buscarTree(key);
 
+        System.out.println(value);
+        
+        
+        StringTokenizer tok = new StringTokenizer(value, "|", false);
+        Object[] rowData = null;
+        model2.addRow(rowData);
+        for (int j = 0; j < model2.getColumnCount(); j++) {
+            if (tok.hasMoreTokens()) {
+                model2.setValueAt(tok.nextToken(), 0, j);
+            }
+        }
+        jt_search.setModel(model2);
     }
 
     /**
@@ -1727,6 +1722,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1759,7 +1755,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton jb_addFile;
     private javax.swing.JButton jb_addFile1;
     private javax.swing.JButton jb_addFile2;
@@ -1775,6 +1770,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jp_addFile;
     private javax.swing.JPanel jp_addFileTopBar;
     private javax.swing.JTable jt_info;
+    private javax.swing.JTable jt_search;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JRadioButton rb_char;
     private javax.swing.JRadioButton rb_charEdit;
@@ -1793,7 +1789,9 @@ public class GUI extends javax.swing.JFrame {
     Archivos archivo;
     String filename;
     Campos tempCamp;
+    ArrayList registrosAvailable = new ArrayList();
     DefaultTableModel model = new DefaultTableModel();
+    DefaultTableModel model2 = new DefaultTableModel();
     boolean hasKey;
     int lastRow;
 
@@ -1822,4 +1820,199 @@ public class GUI extends javax.swing.JFrame {
             return null;
         }
     }
+
+    private class XML {
+
+        String fileName;
+        ArrayList<Campos> campos = new ArrayList();
+        ArrayList<String> registros = new ArrayList();
+
+        public String getFileName() {
+            return fileName;
+        }
+
+        public void setFileName(String fileName) {
+            this.fileName = fileName;
+        }
+
+        public ArrayList<Campos> getCampos() {
+            return campos;
+        }
+
+        public void setCampos(ArrayList<Campos> campos) {
+            this.campos = campos;
+        }
+
+        public ArrayList<String> getRegistros() {
+            return registros;
+        }
+
+        public void setRegistros(ArrayList<String> registros) {
+            this.registros = registros;
+        }
+
+        public void saveXML() throws IOException {
+            String path = "./ArchivosXML/" + fileName + ".XML";
+            System.out.println("Name: " + fileName);
+            File f = new File(path);
+            String saving = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n";
+            BufferedWriter writer = new BufferedWriter(new FileWriter(f));
+            if (!campos.isEmpty()) {
+                for (int i = 0; i < campos.size(); i++) {
+                    if (campos.get(i).isKey() == true) {
+                        saving += "\t<Key>\n";
+                    }
+                    saving += "\t\t<" + campos.get(i).getType() + " [" + campos.get(i).getLength() + "]> \n";
+                    //Esto va dentro de un for
+                    for (int j = 0; j < model.getColumnCount(); j++) {
+                        if (campos.get(i).getName().equals(model.getColumnName(i))) {
+
+                            for (int k = 0; k < model.getRowCount(); k++) {
+                                saving += "\t\t\t<" + campos.get(i).getName() + ">" + model.getValueAt(k, j) + "</" + campos.get(i).getName() + ">\n";
+                            }
+
+                        }
+                    }
+                    saving += "\t\t</" + campos.get(i).getType() + ">\n";
+                    if (campos.get(i).isKey() == true) {
+                        saving += "\t</Key>\n";
+                    }
+                    //saving = "";
+                    //writer.append(saving);
+                }
+                writer.write(saving);
+
+            }
+
+            writer.close();
+        }
+
+    }
+
+    public class WriteExcel {
+
+        private WritableCellFormat timesBoldUnderline;
+        private WritableCellFormat times;
+        private String inputFile;
+        private String fileName;
+        private ArrayList<Campos> campos = new ArrayList();
+
+        public ArrayList<Campos> getCampos() {
+            return campos;
+        }
+
+        public void setCampos(ArrayList<Campos> campos) {
+            this.campos = campos;
+        }
+
+        public void setOutputFile(String inputFile) {
+            this.inputFile = inputFile;
+        }
+
+        public String getFileName() {
+            return fileName;
+        }
+
+        public void setFileName(String fileName) {
+            this.fileName = fileName;
+        }
+
+        public void write() throws IOException, WriteException {
+            String path = "./Archivos/" + fileName + "xls";
+            File file = new File(path);
+            WorkbookSettings wbSettings = new WorkbookSettings();
+
+            wbSettings.setLocale(new Locale("en", "EN"));
+
+            WritableWorkbook workbook = Workbook.createWorkbook(file, wbSettings);
+            workbook.createSheet("Report", 0);
+            WritableSheet excelSheet = workbook.getSheet(0);
+            createLabel(excelSheet);
+            createContent(excelSheet);
+
+            workbook.write();
+            workbook.close();
+        }
+
+        private void createLabel(WritableSheet sheet)
+                throws WriteException {
+            // Lets create a times font
+            WritableFont times10pt = new WritableFont(WritableFont.TIMES, 10);
+            // Define the cell format
+            times = new WritableCellFormat(times10pt);
+            // Lets automatically wrap the cells
+            times.setWrap(true);
+
+            // create create a bold font with unterlines
+            WritableFont times10ptBoldUnderline = new WritableFont(WritableFont.TIMES, 10, WritableFont.BOLD, false, UnderlineStyle.SINGLE);
+            timesBoldUnderline = new WritableCellFormat(times10ptBoldUnderline);
+            // Lets automatically wrap the cells
+            timesBoldUnderline.setWrap(true);
+
+            CellView cv = new CellView();
+            cv.setFormat(times);
+            cv.setFormat(timesBoldUnderline);
+            cv.setAutosize(true);
+
+            // Write a few headers
+//        addCaption(sheet, 0, 0, "Header 1");
+//        addCaption(sheet, 1, 0, "This is another header");
+//        addCaption(sheet, 2, 0, "Con add Caption se agregan los campos de mierda");
+//        addCaption(sheet, 3, 0, "Key");
+            for (int i = 0; i < campos.size(); i++) {
+                addCaption(sheet, i, 0, campos.get(i).getName());
+            }
+
+        }
+
+        private void createContent(WritableSheet sheet) throws WriteException,
+                RowsExceededException {
+            // Write a few number
+            for (int i = 1; i < 10; i++) {
+                // First column
+                addCaption(sheet, 0, i, "Aqui iria el nombre del registro etc  " + i + 10);
+                // Second column
+                addNumber(sheet, 1, i, i * i);
+            }
+            // Lets calculate the sum of it
+            StringBuffer buf = new StringBuffer();
+            buf.append("SUM(A2:A10)");
+            Formula f = new Formula(0, 10, buf.toString());
+            sheet.addCell(f);
+            buf = new StringBuffer();
+            buf.append("SUM(B2:B10)");
+            f = new Formula(1, 10, buf.toString());
+            sheet.addCell(f);
+
+            // now a bit of text
+            for (int i = 12; i < 20; i++) {
+                // First column
+                addLabel(sheet, 0, i, "Boring text " + i);
+                // Second column
+                addLabel(sheet, 1, i, "Another text");
+            }
+        }
+
+        private void addCaption(WritableSheet sheet, int column, int row, String s)
+                throws RowsExceededException, WriteException {
+            Label label;
+            label = new Label(column, row, s, timesBoldUnderline);
+            sheet.addCell(label);
+        }
+
+        private void addNumber(WritableSheet sheet, int column, int row,
+                Integer integer) throws WriteException, RowsExceededException {
+            jxl.write.Number number;
+            number = new jxl.write.Number(column, row, integer, times);
+            sheet.addCell(number);
+        }
+
+        private void addLabel(WritableSheet sheet, int column, int row, String s)
+                throws WriteException, RowsExceededException {
+            Label label;
+            label = new Label(column, row, s, times);
+            sheet.addCell(label);
+        }
+    }
+
 }

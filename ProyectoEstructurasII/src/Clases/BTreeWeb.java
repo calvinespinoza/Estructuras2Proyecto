@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class BTreeWeb<Key extends Comparable<Key>, Value>  {
     // max children per B-tree node = M-1
     // (must be even and greater than 2)
-    private static final int M = 4;
+    private static final int M = 6;
 
     private Node root;       // root of the B-tree
     private int height;      // height of the B-tree

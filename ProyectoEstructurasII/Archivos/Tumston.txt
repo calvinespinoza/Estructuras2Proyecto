@@ -1,0 +1,3 @@
+Thompson: double[15]:n,      Toston: int[8]:k, 
+2435221|15
+243543|16
