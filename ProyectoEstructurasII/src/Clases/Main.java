@@ -19,7 +19,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         //String key = sc.nextLine();
 
-        BTree bt = new BTree(5);
+        ArbolB bt = new ArbolB(5);
 
         bt.insert(1);
         bt.insert(2);

@@ -895,12 +895,10 @@ public class GUI extends javax.swing.JFrame {
         jd_search.setUndecorated(true);
 
         jPanel8.setBackground(new java.awt.Color(0, 102, 153));
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Gotham Bold", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("B U S Q U E D A");
-        jPanel8.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(228, 78, -1, -1));
 
         tf_search.setBackground(new java.awt.Color(255, 255, 255));
         tf_search.setFont(new java.awt.Font("Gotham Medium", 0, 14)); // NOI18N
@@ -911,7 +909,6 @@ public class GUI extends javax.swing.JFrame {
                 tf_searchKeyPressed(evt);
             }
         });
-        jPanel8.add(tf_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 142, 256, 30));
 
         jButton13.setBackground(new java.awt.Color(255, 255, 255));
         jButton13.setFont(new java.awt.Font("Gotham Medium", 0, 14)); // NOI18N
@@ -924,7 +921,6 @@ public class GUI extends javax.swing.JFrame {
                 jButton13ActionPerformed(evt);
             }
         });
-        jPanel8.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, -1, 30));
 
         jt_search.setFont(new java.awt.Font("Gotham Medium", 0, 11)); // NOI18N
         jt_search.setModel(new javax.swing.table.DefaultTableModel(
@@ -936,8 +932,6 @@ public class GUI extends javax.swing.JFrame {
             }
         ));
         jScrollPane2.setViewportView(jt_search);
-
-        jPanel8.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 523, 210));
 
         jPanel9.setBackground(new java.awt.Color(0, 86, 138));
 
@@ -987,15 +981,52 @@ public class GUI extends javax.swing.JFrame {
             .addComponent(bt_backtomain1)
         );
 
-        jPanel8.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        jButton17.setText("jButton17");
+        jButton17.setFont(new java.awt.Font("Gotham Medium", 0, 12)); // NOI18N
+        jButton17.setText("E L I M I N A R");
         jButton17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton17ActionPerformed(evt);
             }
         });
-        jPanel8.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 460, -1, -1));
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(228, 228, 228)
+                .addComponent(jLabel5))
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(127, 127, 127)
+                .addComponent(tf_search, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
+                .addComponent(jButton13))
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(239, 239, 239)
+                .addComponent(jButton17))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(jLabel5)
+                .addGap(43, 43, 43)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(tf_search, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(58, 58, 58)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton17)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout jd_searchLayout = new javax.swing.GroupLayout(jd_search.getContentPane());
         jd_search.getContentPane().setLayout(jd_searchLayout);
@@ -1638,6 +1669,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         // TODO add your handling code here:
+        archivo.eliminar(tf_search.getText());
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void searchKey() {

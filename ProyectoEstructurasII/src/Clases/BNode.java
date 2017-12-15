@@ -98,7 +98,7 @@ public class BNode {
                 count++;
             }
         }
-       // System.out.println("llaves: " + llaves);
+        // System.out.println("llaves: " + llaves);
         return count;
     }
 
@@ -106,7 +106,7 @@ public class BNode {
         int i;
         for (i = 0; i < keyCount(); i++) {
             if (!hoja) {
-                if(nodos.get(i) != null){
+                if (nodos.get(i) != null) {
                     nodos.get(i).recorrido();
                 }
             }
@@ -178,7 +178,7 @@ public class BNode {
                 nodo2.getNodos().set(i, nodo.getNodos().get(i + gradoMinimo));
             }
         }
-        
+
         //nodo.getLlaves().size();
         for (int i = keyCount(); i >= indice + 1; i--) {
             nodos.set(i + 1, nodos.get(i));
