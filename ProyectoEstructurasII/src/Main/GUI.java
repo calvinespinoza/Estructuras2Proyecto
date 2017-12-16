@@ -8,6 +8,11 @@ package Main;
 import Clases.XMLClass;
 import Clases.Archivos;
 import Clases.Campos;
+
+import java.io.BufferedWriter;
+
+import java.awt.event.KeyEvent;
+
 import java.awt.event.KeyEvent;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -31,6 +36,7 @@ import javax.swing.table.DefaultTableModel;
 import jxl.CellView;
 import jxl.Workbook;
 import jxl.WorkbookSettings;
+import jxl.biff.DisplayFormat;
 import jxl.format.UnderlineStyle;
 import jxl.write.Formula;
 import jxl.write.Label;
@@ -818,7 +824,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("R E G I S T R O S ");
 
-        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/file-excel-box.png"))); // NOI18N
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Excel Material.png"))); // NOI18N
         jButton12.setBorderPainted(false);
         jButton12.setContentAreaFilled(false);
         jButton12.addActionListener(new java.awt.event.ActionListener() {
@@ -827,8 +833,12 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jButton14.setFont(new java.awt.Font("Gotham Medium", 0, 11)); // NOI18N
+        jButton14.setFont(new java.awt.Font("Gotham Medium", 0, 12)); // NOI18N
+        jButton14.setForeground(new java.awt.Color(255, 255, 255));
+        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-find-user-female-48.png"))); // NOI18N
         jButton14.setText("S E A R C H");
+        jButton14.setBorderPainted(false);
+        jButton14.setContentAreaFilled(false);
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton14ActionPerformed(evt);
@@ -841,18 +851,14 @@ public class GUI extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(jButton14))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(175, 175, 175)))
+                .addContainerGap()
+                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jButton14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(bt_removereg)
                     .addComponent(bt_addregistry)
@@ -865,19 +871,22 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52)
-                        .addComponent(jButton14))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jButton12)
+                                .addGap(8, 8, 8))
+                            .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(bt_removereg)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bt_addregistry)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bt_savereg))
-                    .addComponent(jButton12))
+                        .addComponent(bt_savereg)))
                 .addGap(15, 15, 15))
         );
 
@@ -968,7 +977,7 @@ public class GUI extends javax.swing.JFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                 .addComponent(bt_backtomain1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 410, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton15)
@@ -993,27 +1002,26 @@ public class GUI extends javax.swing.JFrame {
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(228, 228, 228)
-                .addComponent(jLabel5))
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(127, 127, 127)
-                .addComponent(tf_search, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
-                .addComponent(jButton13))
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(239, 239, 239)
-                .addComponent(jButton17))
+                .addGap(51, 51, 51)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5)
+                        .addComponent(jButton17))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addComponent(tf_search, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17)
+                        .addComponent(jButton13)))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addGap(43, 43, 43)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1023,7 +1031,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(58, 58, 58)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(41, 41, 41)
                 .addComponent(jButton17)
                 .addContainerGap())
         );
@@ -1080,7 +1088,7 @@ public class GUI extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 601, Short.MAX_VALUE)
+                .addGap(0, 646, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1))
@@ -1139,9 +1147,9 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel10)
                     .addComponent(jl_openfile))
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addContainerGap(251, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                .addGap(21, 459, Short.MAX_VALUE)
+                .addGap(21, 504, Short.MAX_VALUE)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel11)
                     .addComponent(jLabel12)
@@ -1333,6 +1341,7 @@ public class GUI extends javax.swing.JFrame {
     private void bt_fileeditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_fileeditActionPerformed
         // TODO add your handling code here:
         model = new DefaultTableModel();
+        model2 = new DefaultTableModel();
         if (archivo != null) {
             jd_fileopen.pack();
             jd_fileopen.setLocationRelativeTo(null);
@@ -1367,8 +1376,7 @@ public class GUI extends javax.swing.JFrame {
                         Object[] rowData = null;
                         model.addRow(rowData);
                         for (int j = 0; j < model.getColumnCount(); j++) {
-                            if(archivo.getCampos().get(j).isKey())
-                            {
+                            if (archivo.getCampos().get(j).isKey()) {
                                 keyColumn = j;
                             }
                             if (tok.hasMoreTokens()) {
@@ -1719,12 +1727,19 @@ public class GUI extends javax.swing.JFrame {
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         if (archivo != null) {
             XML xml = new XML();
+            WriteExcel excel = new WriteExcel();
             xml.setFileName(archivo.getName());
             xml.setCampos(archivo.getCampos());
             xml.setRegistros(archivo.getRegistros());
             try {
                 xml.saveXML();
+                excel.setFileName(archivo.getName());
+                excel.setOutputFile("./ArchivosXML/" + archivo.getName() + ".xls");
+                excel.write();
+
             } catch (IOException ex) {
+                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (WriteException ex) {
                 Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -1747,7 +1762,7 @@ public class GUI extends javax.swing.JFrame {
         jd_search.pack();
         jd_search.setLocationRelativeTo(null);
         jd_search.setVisible(true);
-
+       
         jt_search.setModel(model2);
     }//GEN-LAST:event_jButton14ActionPerformed
 
@@ -1774,14 +1789,11 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void searchKey() {
-        System.out.println("verag");
         String key = tf_search.getText();
-
         String value = archivo.buscarTree(key);
 
         System.out.println(value);
-        
-        
+
         StringTokenizer tok = new StringTokenizer(value, "|", false);
         Object[] rowData = null;
         model2.addRow(rowData);
@@ -2030,6 +2042,7 @@ public class GUI extends javax.swing.JFrame {
         private String inputFile;
         private String fileName;
         private ArrayList<Campos> campos = new ArrayList();
+        CellView cv;
 
         public ArrayList<Campos> getCampos() {
             return campos;
@@ -2052,7 +2065,7 @@ public class GUI extends javax.swing.JFrame {
         }
 
         public void write() throws IOException, WriteException {
-            String path = "./Archivos/" + fileName + "xls";
+            String path = "./ArchivosXML/" + fileName + ".xls";
             File file = new File(path);
             WorkbookSettings wbSettings = new WorkbookSettings();
 
@@ -2071,60 +2084,38 @@ public class GUI extends javax.swing.JFrame {
         private void createLabel(WritableSheet sheet)
                 throws WriteException {
             // Lets create a times font
-            WritableFont times10pt = new WritableFont(WritableFont.TIMES, 10);
-            // Define the cell format
+            WritableFont times10pt = new WritableFont(WritableFont.TAHOMA, 12,WritableFont.NO_BOLD,false);
+            // Define the cell format       
             times = new WritableCellFormat(times10pt);
             // Lets automatically wrap the cells
             times.setWrap(true);
 
             // create create a bold font with unterlines
-            WritableFont times10ptBoldUnderline = new WritableFont(WritableFont.TIMES, 10, WritableFont.BOLD, false, UnderlineStyle.SINGLE);
+            WritableFont times10ptBoldUnderline = new WritableFont(WritableFont.TAHOMA, 16, WritableFont.BOLD, false, UnderlineStyle.NO_UNDERLINE);
             timesBoldUnderline = new WritableCellFormat(times10ptBoldUnderline);
             // Lets automatically wrap the cells
             timesBoldUnderline.setWrap(true);
 
-            CellView cv = new CellView();
+            cv = new CellView();
             cv.setFormat(times);
             cv.setFormat(timesBoldUnderline);
-            cv.setAutosize(true);
-
+            //cv.setAutosize(true);
+            sheet.getSettings().setDefaultColumnWidth(17);
+            sheet.getSettings().setDefaultRowHeight(21*20);
             // Write a few headers
-//        addCaption(sheet, 0, 0, "Header 1");
-//        addCaption(sheet, 1, 0, "This is another header");
-//        addCaption(sheet, 2, 0, "Con add Caption se agregan los campos de mierda");
-//        addCaption(sheet, 3, 0, "Key");
-            for (int i = 0; i < campos.size(); i++) {
-                addCaption(sheet, i, 0, campos.get(i).getName());
+            for (int i = 0; i < archivo.getCampos().size(); i++) {
+                addCaption(sheet, i, 0, archivo.getCampos().get(i).getName());
             }
-
         }
 
-        private void createContent(WritableSheet sheet) throws WriteException,
-                RowsExceededException {
-            // Write a few number
-            for (int i = 1; i < 10; i++) {
-                // First column
-                addCaption(sheet, 0, i, "Aqui iria el nombre del registro etc  " + i + 10);
-                // Second column
-                addNumber(sheet, 1, i, i * i);
-            }
-            // Lets calculate the sum of it
-            StringBuffer buf = new StringBuffer();
-            buf.append("SUM(A2:A10)");
-            Formula f = new Formula(0, 10, buf.toString());
-            sheet.addCell(f);
-            buf = new StringBuffer();
-            buf.append("SUM(B2:B10)");
-            f = new Formula(1, 10, buf.toString());
-            sheet.addCell(f);
+        private void createContent(WritableSheet sheet) throws WriteException, RowsExceededException {
 
-            // now a bit of text
-            for (int i = 12; i < 20; i++) {
-                // First column
-                addLabel(sheet, 0, i, "Boring text " + i);
-                // Second column
-                addLabel(sheet, 1, i, "Another text");
+            for (int i = 0; i < model.getColumnCount(); i++) {
+                for (int j = 0; j < model.getRowCount(); j++) {
+                    addLabel(sheet, i, j + 1, (String) model.getValueAt(j, i));
+                }
             }
+            cv.setAutosize(true);
         }
 
         private void addCaption(WritableSheet sheet, int column, int row, String s)

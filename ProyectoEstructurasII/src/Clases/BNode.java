@@ -110,7 +110,7 @@ public class BNode {
                     nodos.get(i).recorrido();
                 }
             }
-            System.out.print(llaves.get(i) + " ");
+            System.out.print(" " + llaves.get(i).toString());
         }
 
         if (!hoja) {
