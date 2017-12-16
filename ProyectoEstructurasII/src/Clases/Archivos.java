@@ -166,7 +166,6 @@ public class Archivos {
         
     }
      */
-
     public void agregarRegistro(String registro) throws IOException {//utilizando la avail list
         String path = "./Archivos/" + name;
         String avail = "./Archivos/" + path.replaceFirst("[.][^.]+$", "") + ".avail";
@@ -394,27 +393,24 @@ public class Archivos {
 
         String header = sc2.nextLine();
         //HEADER
-        StringTokenizer token = new StringTokenizer(header, ",", true);
+        StringTokenizer token = new StringTokenizer(header, ",", false);
 
         while (token.hasMoreTokens()) {
-            StringTokenizer token2 = new StringTokenizer(token.nextToken(), ":[]", true);
+            StringTokenizer token2 = new StringTokenizer(token.nextToken(), ":[]", false);
             String fieldname = token2.nextToken();
             boolean key = false;
             if (token2.hasMoreTokens()) {
                 //System.out.println(fieldname);
-                token2.nextToken();
                 String fieldtype = token2.nextToken().substring(1);
                 //System.out.println(fieldtype);
-                token2.nextToken();
                 int length = Integer.parseInt(token2.nextToken());
                 //System.out.println(length);
-                token2.nextToken();
+                System.out.println("antes de aKa");
                 if (token2.nextToken().equals("k")) {
+                    System.out.println("entre aKa");
                     key = true;
                 }
                 archivo.addCampo(new Campos(fieldname, fieldtype, length, key));
-                token.nextToken();
-
             }
         }
         //REGISTROS
@@ -467,18 +463,17 @@ public class Archivos {
         writer.close();
     }
 
-    public void llenarTree() {
+    public void llenarTree(ArrayList disponibles) {
         tree = new BTreeWeb();
-
         for (int i = 0; i < this.llaves.size(); i++) {
-            tree.put(llaves.get(i), i);
+            tree.put(llaves.get(i), disponibles.get(i));
             System.out.println(tree.toString());
         }
     }
 
-    public int buscarTree(String key) {
-        int val = (int) tree.get(Integer.parseInt(key));
-        
+    public String buscarTree(String key) {
+        String val = (String) tree.get(Integer.parseInt(key));
+
         return val;
     }
 
