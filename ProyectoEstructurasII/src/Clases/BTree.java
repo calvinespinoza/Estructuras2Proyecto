@@ -106,7 +106,6 @@ public class BTree<Key extends Comparable<Key>, Value> {
 
     private Value search(Node x, Key key, int ht) {
         Llave[] children = x.children;
-        adjacentNodes.add(x);
         currentNode = x;
         // external node
         if (ht == 0) {
@@ -121,8 +120,9 @@ public class BTree<Key extends Comparable<Key>, Value> {
         } // internal node
         else {
             for (int j = 0; j < x.m; j++) {
-                if (j + 1 == x.m || less(key, children[j + 1].key)) {
 
+                if (j + 1 == x.m || less(key, children[j + 1].key)) {
+                    adjacentNodes.add(x);
                     return search(children[j].next, key, ht - 1);
                 }
             }
@@ -315,6 +315,7 @@ public class BTree<Key extends Comparable<Key>, Value> {
                 if (j > 0) {
                     s.append(indent + "(" + children[j].key + ")\n");
                 }
+
                 s.append(toString(children[j].next, ht - 1, indent + "     "));
             }
         }
