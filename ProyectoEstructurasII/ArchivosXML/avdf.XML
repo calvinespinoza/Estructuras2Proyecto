@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE XML>
+
+	<NoKey>
+		<char [10]> 
+			<nombre>Text here</nombre>
+		</char>
+	</NoKey>
+	<NoKey>
+		<char [10]> 
+			<apellido>Text here</apellido>
+		</char>
+	</NoKey>
+	<Key>
+		<int [8]> 
+			<ID>Text here</ID>
+		</int>
+	</Key>

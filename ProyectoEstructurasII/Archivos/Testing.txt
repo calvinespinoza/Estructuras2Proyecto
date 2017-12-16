@@ -1,0 +1,1 @@
+Nombre: char[20]:n, Apellido: char[20]:n, Edad: int[3]:n, ID: int[8]:n, ID: int[8]:k, 

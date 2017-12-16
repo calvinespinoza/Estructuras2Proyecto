@@ -1340,7 +1340,7 @@ public class GUI extends javax.swing.JFrame {
             jd_fileopen.setVisible(true);
             this.setVisible(false);
 
-            int keyColumn = 0;
+            keyColumn = 0;
 
             for (int i = 0; i < archivo.getCampos().size(); i++) {
                 String str = archivo.getCampos().get(i).getName();
@@ -1548,7 +1548,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void bt_saveregActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_saveregActionPerformed
         // TODO add your handling code here:
-        if (jt_info.getCellEditor() != null) {
+        /*if (jt_info.getCellEditor() != null) {
             jt_info.getCellEditor().stopCellEditing();
         }
         StringBuilder sb = new StringBuilder();
@@ -1570,7 +1570,108 @@ public class GUI extends javax.swing.JFrame {
 
         } catch (IOException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+        if (jt_info.getCellEditor() != null) {
+            jt_info.getCellEditor().stopCellEditing();
         }
+                
+        
+        /*for (int i = 0; i < model.getRowCount(); i++) {
+            int totalspaces = 0;
+            sb = new StringBuilder();
+            
+            
+            for (int j = 0; j < model.getColumnCount(); j++) {
+                int tamano = archivo.getCampos().get(j).getLength();
+                System.out.println("tamano: " + tamano);
+
+                //totalSpaces = tamano - ((String)model.getValueAt(i,j)).length();
+                totalspaces += tamano - ((String)model.getValueAt(i,j)).length();
+                if (j == model.getColumnCount() - 1) {
+                    //sb.append((String)model.getValueAt(i, j));
+                    //sb.append(totalSpaces == 0 ? (String) model.getValueAt(i, j) : (String) model.getValueAt(i, j) + extraSpaces(totalSpaces));
+                    sb.append(((String) model.getValueAt(i, j)).length() < tamano ? (String) model.getValueAt(i, j) : (String) model.getValueAt(i, j) + extraSpaces(tamano));
+                    //sb.append((String) model.getValueAt(i, j));
+                } else {
+                    //sb.append((String)model.getValueAt(i, j)).append("|");
+                    //sb.append((String) model.getValueAt(i, j)).append("\");
+                    sb.append(totalSpaces == 0 ? (String) model.getValueAt(i, j) + "|" : (String) model.getValueAt(i, j) + extraSpaces(totalSpaces) + "|");
+                    //sb.append(((String) model.getValueAt(i, j)).length() < tamano ? (String) model.getValueAt(i, j) + "|" : (String) model.getValueAt(i, j) + extraSpaces(tamano) + "|");
+                }
+            }
+            
+            //if(archivo.getLlaves())
+            
+            if(!keyExists(Integer.parseInt((String)model.getValueAt(i, keyColumn)))){
+                sb.append(extraSpaces(totalspaces));
+                archivo.addRegistro(sb.toString());
+            }else{
+                System.out.println("ya existe");
+            }
+        }
+        //lastRow = model.getRowCount();
+        try {
+            archivo.save();
+
+        } catch (IOException ex) {
+            System.out.println("error");
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("arbol imprimiendo");
+        
+        /*
+        DefaultTableModel dtm = (DefaultTableModel)jt_info.getModel();
+        for (int i = dtm.getRowCount() - 1; i >= 0; i--) {
+           
+            dtm.removeRow(i);
+        }*/
+        
+        if (jt_info.getCellEditor() != null) {
+            jt_info.getCellEditor().stopCellEditing();
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < model.getRowCount(); i++) {
+            sb = new StringBuilder();
+            
+            
+            for (int j = 0; j < model.getColumnCount(); j++) {
+                int tamano = archivo.getCampos().get(j).getLength();
+                System.out.println("tamano: " + tamano);
+                int totalSpaces;
+
+                totalSpaces = tamano - ((String)model.getValueAt(i,j)).length();
+                if (j == model.getColumnCount() - 1) {
+                    sb.append(totalSpaces == 0 ? (String) model.getValueAt(i, j) : (String) model.getValueAt(i, j) + extraSpaces(totalSpaces));
+                    //sb.append(((String) model.getValueAt(i, j)).length() < tamano ? (String) model.getValueAt(i, j) : (String) model.getValueAt(i, j) + extraSpaces(tamano));
+                    //sb.append((String) model.getValueAt(i, j));
+                } else {
+                    //sb.append((String) model.getValueAt(i, j)).append("\");
+                    sb.append(totalSpaces == 0 ? (String) model.getValueAt(i, j) + "|" : (String) model.getValueAt(i, j) + extraSpaces(totalSpaces) + "|");
+                    //sb.append(((String) model.getValueAt(i, j)).length() < tamano ? (String) model.getValueAt(i, j) + "|" : (String) model.getValueAt(i, j) + extraSpaces(tamano) + "|");
+                }
+            }
+            archivo.addRegistro(sb.toString());
+        }
+        //lastRow = model.getRowCount();
+        try {
+            archivo.save();
+
+        } catch (IOException ex) {
+            System.out.println("error");
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("arbol imprimiendo");
+        
+        /*
+        DefaultTableModel dtm = (DefaultTableModel)jt_info.getModel();
+        for (int i = dtm.getRowCount() - 1; i >= 0; i--) {
+           
+            dtm.removeRow(i);
+        }*/
+        
+        resetTable();
+        
+        resetTable();
         System.out.println("arbol imprimiendo");
         archivo.llenarTree(registrosAvailable);
     }//GEN-LAST:event_bt_saveregActionPerformed
@@ -1826,6 +1927,7 @@ public class GUI extends javax.swing.JFrame {
     DefaultTableModel model2 = new DefaultTableModel();
     boolean hasKey;
     int lastRow;
+    int keyColumn;
 
     public void exit() {
         int p = JOptionPane.showConfirmDialog(this, "Are you sure you want to quit");
@@ -2047,4 +2149,36 @@ public class GUI extends javax.swing.JFrame {
         }
     }
 
+    
+    
+    public String extraSpaces(int count){
+        StringBuilder sb = new StringBuilder();
+        
+        for (int i = 0; i < count; i++) {
+            sb.append("*");
+        }
+        
+        return sb.toString();
+    }
+    
+    
+    
+    public void resetTable(){
+        model = new DefaultTableModel();
+        for (int i = 0; i < archivo.getCampos().size(); i++) {
+                String str = archivo.getCampos().get(i).getName();
+                model.addColumn(str);
+        }
+        
+        jt_info.setModel(model);
+    }
+    
+    public boolean keyExists(int key){
+        if(archivo.getLlaves().contains(key)){
+            return false;
+        }
+        return true;
+    }
+    
+    
 }
