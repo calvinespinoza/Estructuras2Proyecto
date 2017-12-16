@@ -26,7 +26,7 @@ public class Archivos {
     ArrayList<String> registros = new ArrayList();
     ArrayList<Integer> llaves = new ArrayList();
 
-    BTreeWeb tree = new BTreeWeb();
+    BTree tree = new BTree();
 
     public Archivos() {
     }
@@ -80,11 +80,11 @@ public class Archivos {
         this.llaves.add(ll);
     }
 
-    public BTreeWeb getTree() {
+    public BTree getTree() {
         return tree;
     }
 
-    public void setTree(BTreeWeb tree) {
+    public void setTree(BTree tree) {
         this.tree = tree;
     }
 
@@ -464,7 +464,7 @@ public class Archivos {
     }
 
     public void llenarTree(ArrayList disponibles) {
-        tree = new BTreeWeb();
+        tree = new BTree();
         for (int i = 0; i < this.llaves.size(); i++) {
             tree.put(llaves.get(i), disponibles.get(i));
             System.out.println(tree.toString());
@@ -475,6 +475,12 @@ public class Archivos {
         String val = (String) tree.get(Integer.parseInt(key));
 
         return val;
+    }
+    
+    public void eliminar(String key)
+    {
+        tree.remover(Integer.parseInt(key));
+        System.out.println(tree.toString());
     }
 
 }
